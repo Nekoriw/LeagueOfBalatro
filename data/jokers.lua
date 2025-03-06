@@ -14,9 +14,11 @@ SMODS.Joker({
             chips_gain = 10
         }
     },
-    loc_vars = {
-        vars = { card.ability.extra.chips_gain, card.ability.extra.chips }
-    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips_gain, card.ability.extra.chips },
+        }
+    end,
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
