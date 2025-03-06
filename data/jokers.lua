@@ -3,10 +3,19 @@ SMODS.Joker({
     loc_txt = {
         name = "Test Joker",
         text = {
-            "This Test Joker gains {C:chips}+#2#{} Chips",
+            "This Test Joker gains {C:chips}+#1#{} Chips",
             "when scoring a {C:attention}High Card{}",
-            "{C:inactive}(Currently {C:chips}+#0#{C:inactive} Chips)"
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
+    },
+    config = {
+        extra = {
+            chips = 0,
+            chips_gain = 10
+        }
+    },
+    loc_vars = {
+        vars = { card.ability.extra.chips_gain, card.ability.extra.chips }
     },
     unlocked = true,
     discovered = true,
@@ -16,12 +25,7 @@ SMODS.Joker({
     rarity = 1,
     pos = { x = 0, y = 0 },
     cost = 1,
-    config = {
-        extra = {
-            chips = 0,
-            chips_gain = 10
-        }
-    },
+
 
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands['High Card']) then
