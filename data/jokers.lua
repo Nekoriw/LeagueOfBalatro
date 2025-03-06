@@ -32,6 +32,10 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands['High Card']) then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
+            return {
+                message = 'Upgraded!',
+                colour = G.C.BLUE
+            }
         end
 
         if context.joker_main then
