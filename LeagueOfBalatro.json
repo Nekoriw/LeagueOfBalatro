@@ -1,0 +1,15 @@
+{
+    "id": "LeagueOfBalatro",
+    "name": "League Of Balatro",
+    "author": [
+        "Nekoriw"
+    ],
+    "description": "A Balatro mod, based on the game League Of Legends",
+    "prefix": "LeagueOfBalatro",
+    "main_file": "main.lua",
+    "priority": 0,
+    "badge_colour": "A020F0",
+    "badge_text_colour": "",
+    "version": "0.0.0",
+    "dependencies": []
+}
