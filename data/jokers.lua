@@ -4,7 +4,7 @@ SMODS.Joker({
         name = "Test Joker",
         text = {
             "This Test Joker gains {C:chips}+#1#{} Chips",
-            "when scoring a {C:attention}High Card{}",
+            "if Poker Hand is a {C:attention}High Card{}",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
     },
@@ -30,7 +30,7 @@ SMODS.Joker({
 
 
     calculate = function(self, card, context)
-        if context.before and next(context.poker_hands['High Card']) then
+        if context.before and context.scoring_name == 'High Card' then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
             return {
                 message = 'Upgraded!',
