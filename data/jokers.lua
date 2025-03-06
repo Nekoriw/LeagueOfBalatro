@@ -24,26 +24,16 @@ SMODS.Joker({
     },
 
     calculate = function(self, card, context)
-        -- checks if scoring card is stone card
-        if context.individual and next(context.poker_hands['High Card']) then
+        if context.before and next(context.poker_hands['High Card']) then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
-            return {
-                extra = {
-                    message = 'Plop !',
-                    colour = G.C.RED,
-                    focus = card,
-                },
-                card = card,
-            }
         end
 
-        --adds mult after hand is played
-        if context.joker_main and card.ability.extra.chips > 0 then
-            return {
-                chips_mod = card.ability.extra.mult,
-                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.chips } },
-                card = card
-            }
+        if context.joker_main then
+            if card.ability.extra.chips > 0 then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
         end
     end
 })
