@@ -30,7 +30,7 @@ SMODS.Joker({
 
 
     calculate = function(self, card, context)
-        if context.before and context.scoring_name == 'High Card' then
+        if context.before and context.scoring_name == 'High Card' and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
             return {
                 message = 'Upgraded!',
