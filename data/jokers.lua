@@ -1,9 +1,9 @@
 SMODS.Joker({
-    key = "testJoker",
+    key = "khazix",
     loc_txt = {
-        name = "Test Joker",
+        name = "Kha'zix",
         text = {
-            "This Test Joker gains {C:chips}+#1#{} Chips",
+            "Kha'zix gains {C:chips}+#1#{} Chips",
             "if Poker Hand is a {C:attention}High Card{}",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
