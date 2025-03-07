@@ -1,5 +1,5 @@
-SMODS.Joker(
 -- Kha'zix
+SMODS.Joker(
     {
         key = "khazix",
         loc_txt = {
@@ -48,9 +48,10 @@ SMODS.Joker(
                 end
             end
         end
-    },
+    })
 
-    -- Diana
+-- Diana
+SMODS.Joker(
     {
         key = "diana",
         loc_txt = {
@@ -99,4 +100,5 @@ SMODS.Joker(
                 end
             end
         end
-    })
+    }
+)
