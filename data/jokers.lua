@@ -141,10 +141,10 @@ SMODS.Joker({
     loc_txt = {
         name = "Naafiri",
         text = {
-            "{C:mult}+#1#{} Mult",
             "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+1{} Mult per hand"
+            "reset and gain {C:mult}+1{} Mult per hand",
+            "{C:inactive}Currently {}{C:mult}+#1#{} {C:inactive}Mult{}"
         },
     },
     config = {
