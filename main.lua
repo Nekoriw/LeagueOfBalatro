@@ -1,3 +1,3 @@
-BalatroLeague = SMODS.current_mod
+LeagueOfBalatro = SMODS.current_mod
 
 SMODS.load_file("data/jokers.lua")()

@@ -1,3 +1,10 @@
+SMODS.Atlas {
+    key = "LeagueOfBalatro",
+    path = "LeagueOfBalatro_Jokers.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Joker({
     key = "khazix",
     loc_txt = {
@@ -46,6 +53,7 @@ SMODS.Joker({
             end
         end
     end,
+    atlas = "LeagueOfBalatro"
 })
 SMODS.Joker({
     key = "diana",
@@ -74,7 +82,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
     cost = 3,
 
 
@@ -95,6 +103,7 @@ SMODS.Joker({
             end
         end
     end,
+    atlas = "LeagueOfBalatro"
 })
 SMODS.Joker({
     key = "zilean",
@@ -121,7 +130,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 0, y = 0 },
+    pos = { x = 2, y = 0 },
     cost = 4,
 
     calculate = function(self, card, context)
@@ -134,7 +143,8 @@ SMODS.Joker({
                 }
             end
         end
-    end
+    end,
+    atlas = "LeagueOfBalatro"
 })
 SMODS.Joker({
     key = "naafiri",
@@ -164,7 +174,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    pos = { x = 0, y = 0 },
+    pos = { x = 3, y = 0 },
     cost = 6,
 
     calculate = function(self, card, context)
@@ -176,7 +186,7 @@ SMODS.Joker({
             }
         end
 
-        if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual then
+        if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
             card.ability.extra.mult = 1
             card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
             return {
@@ -190,5 +200,6 @@ SMODS.Joker({
                 mult = card.ability.extra.mult
             }
         end
-    end
+    end,
+    atlas = "LeagueOfBalatro"
 })
