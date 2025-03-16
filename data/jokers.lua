@@ -159,7 +159,7 @@ SMODS.Joker({
     },
     config = {
         extra = {
-            mult = 1,
+            mult = 0,
             gain_mult = 1
         }
     },
@@ -187,7 +187,7 @@ SMODS.Joker({
         end
 
         if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
-            card.ability.extra.mult = 1
+            card.ability.extra.mult = 0
             card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
             return {
                 message = 'Reset',
