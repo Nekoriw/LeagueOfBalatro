@@ -33,7 +33,7 @@ SMODS.Joker({
         if context.before and context.scoring_name == 'High Card' and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
             return {
-                message = 'Upgraded!',
+                message = 'Upgraded',
                 colour = G.C.BLUE
             }
         end
@@ -82,7 +82,7 @@ SMODS.Joker({
         if context.before and context.scoring_name == 'Three of a Kind' and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
             return {
-                message = 'Upgraded!',
+                message = 'Upgraded',
                 colour = G.C.BLUE
             }
         end
@@ -122,7 +122,7 @@ SMODS.Joker({
     perishable_compat = true,
     rarity = 1,
     pos = { x = 0, y = 0 },
-    cost = 3,
+    cost = 4,
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
@@ -144,7 +144,7 @@ SMODS.Joker({
             "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
             "reset and gain {C:mult}+1{} Mult per hand",
-            "{C:inactive}Currently {}{C:mult}+#1#{} {C:inactive}Mult{}"
+            "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}"
         },
     },
     config = {
@@ -160,18 +160,18 @@ SMODS.Joker({
     end,
     unlocked = true,
     discovered = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 1,
+    rarity = 2,
     pos = { x = 0, y = 0 },
-    cost = 3,
+    cost = 6,
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain_mult
             return {
-                message = '+1 Mult !',
+                message = '+' .. card.ability.extra.gain_mult .. ' Mult',
                 colour = G.C.RED
             }
         end
@@ -180,7 +180,7 @@ SMODS.Joker({
             card.ability.extra.mult = 1
             card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
             return {
-                message = 'Reset !',
+                message = 'Reset',
                 colour = G.C.RED
             }
         end
