@@ -110,7 +110,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Zilean",
         text = {
-            "Every {C:attention}3 hands{}, Zilean level up the played hand",
+            "Every {C:attention}3 hands{},",
+            "Zilean level up the played hand",
             "{C:inactive}(In #1# hands)"
         },
     },
