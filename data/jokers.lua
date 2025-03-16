@@ -142,9 +142,9 @@ SMODS.Joker({
         name = "Naafiri",
         text = {
             "{C:mult}+#1#{} Mult",
-            "Each hand played, gain {C:mult}+#2#{} mult.",
+            "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+1{} mult per hand"
+            "reset and gain {C:mult}+1{} Mult per hand"
         },
     },
     config = {
@@ -171,7 +171,7 @@ SMODS.Joker({
         if context.before and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain_mult
             return {
-                message = '+1 mult !',
+                message = '+1 Mult !',
                 colour = G.C.RED
             }
         end
