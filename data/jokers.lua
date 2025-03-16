@@ -27,7 +27,7 @@ SMODS.Joker({
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
@@ -77,7 +77,7 @@ SMODS.Joker({
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
@@ -126,7 +126,7 @@ SMODS.Joker({
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
@@ -170,7 +170,7 @@ SMODS.Joker({
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
