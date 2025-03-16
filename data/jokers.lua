@@ -141,10 +141,10 @@ SMODS.Joker({
     loc_txt = {
         name = "Naafiri",
         text = {
-            "{C:mult}+#1# Mult{}",
-            "Each hand played, gain {C:mult}+#2# mult{}.",
+            "{C:mult}+#1#{} Mult",
+            "Each hand played, gain {C:mult}+#2#{} mult.",
             "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+1 mult{}"
+            "reset and gain {C:mult}+1{} mult per hand"
         },
     },
     config = {
@@ -187,7 +187,7 @@ SMODS.Joker({
 
         if context.joker_main then
             return {
-                chips = card.ability.extra.mult
+                mult = card.ability.extra.mult
             }
         end
     end
