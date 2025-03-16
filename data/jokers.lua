@@ -11,7 +11,7 @@ SMODS.Joker({
         name = "Kha'zix",
         text = {
             "Kha'zix gains {C:chips}+#1#{} Chips",
-            "if hand contains only {C:attention}1{} card",
+            "if played hand contains only {C:attention}1{} card",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
     },
