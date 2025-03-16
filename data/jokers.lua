@@ -1,5 +1,5 @@
 SMODS.Atlas {
-    key = "LeagueOfBalatro",
+    key = "LeagueOfBalatro_Jokers",
     path = "LeagueOfBalatro_Jokers.png",
     px = 71,
     py = 95
@@ -53,7 +53,7 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro"
+    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "diana",
@@ -103,7 +103,7 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro"
+    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "zilean",
@@ -145,7 +145,7 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro"
+    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "naafiri",
@@ -202,5 +202,52 @@ SMODS.Joker({
             }
         end
     end,
-    atlas = "LeagueOfBalatro"
+    atlas = "LeagueOfBalatro_Jokers"
+})
+
+SMODS.Joker({
+    key = "veigar",
+    loc_txt = {
+        name = "Veigar",
+        text = {
+            "{C:chips}+#1#{} Chips",
+            "When {C:attention}Boss Blind{} is defeated",
+            "Double his chips"
+        },
+    },
+    config = {
+        extra = {
+            chips = 10
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips },
+        }
+    end,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    pos = { x = 4, y = 0 },
+    cost = 6,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
+            card.ability.extra.chips = card.ability.extra.chips * 2
+            return {
+                message = 'Upgraded',
+                colour = G.C.BLUE
+            }
+        end
+
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+    atlas = "LeagueOfBalatro_Jokers"
 })
