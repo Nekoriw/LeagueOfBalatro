@@ -101,7 +101,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Zilean",
         text = {
-            "Every 3 hands, Zilean level up the played hand",
+            "Every {C:attention}3 hands{}, Zilean level up the played hand",
             "{C:inactive}(In #1# hands)"
         },
     },
@@ -133,6 +133,62 @@ SMODS.Joker({
                     level_up = true
                 }
             end
+        end
+    end
+})
+SMODS.Joker({
+    key = "naafiri",
+    loc_txt = {
+        name = "Naafiri",
+        text = {
+            "{C:mult}+#1# Mult{}",
+            "Each hand played, gain {C:mult}+#2# mult{}.",
+            "When {C:attention}Boss Blind{} is defeated",
+            "reset and gain {C:mult}+1 mult{}"
+        },
+    },
+    config = {
+        extra = {
+            mult = 1,
+            gain_mult = 1
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.mult, card.ability.extra.gain_mult },
+        }
+    end,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 1,
+    pos = { x = 0, y = 0 },
+    cost = 3,
+
+    calculate = function(self, card, context)
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain_mult
+            return {
+                message = '+1 mult !',
+                colour = G.C.RED
+            }
+        end
+
+        if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual then
+            card.ability.extra.mult = 1
+            card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
+            return {
+                message = 'Reset !',
+                colour = G.C.RED
+            }
+        end
+
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.mult
+            }
         end
     end
 })
