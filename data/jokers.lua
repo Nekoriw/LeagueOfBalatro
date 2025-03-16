@@ -11,7 +11,7 @@ SMODS.Joker({
         name = "Kha'zix",
         text = {
             "Kha'zix gains {C:chips}+#1#{} Chips",
-            "if Poker Hand is a {C:attention}High Card{}",
+            "if hand contains only {C:attention}1{} card",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
     },
@@ -37,7 +37,7 @@ SMODS.Joker({
 
 
     calculate = function(self, card, context)
-        if context.before and context.scoring_name == 'High Card' and not context.blueprint then
+        if context.before and #context.full_hand == 1 and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
             return {
                 message = 'Upgraded',
