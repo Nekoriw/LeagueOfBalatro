@@ -140,6 +140,7 @@ SMODS.Joker({
             if (card.ability.extra.hands == 0) then
                 card.ability.extra.hands = 3
                 return {
+                    message = "Level up!",
                     level_up = true
                 }
             end
