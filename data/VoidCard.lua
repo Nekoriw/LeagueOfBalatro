@@ -6,14 +6,23 @@ SMODS.Atlas {
 }
 SMODS.Enhancement({
     key = "void",
+    name = "Void Card",
     atlas = "LeagueOfBalatro_Card",
     pos = { x = 0, y = 0 },
-    discovered = false,
+    discovered = true,
     config = {
         extra = {
             mult = 0,
-            mult_gain = 5
+            mult_gain = 0.5
         }
+    },
+    loc_txt = {
+        name = "Void Card",
+        text = {
+            "Gain {C:mult}+#2#{} Mult",
+            "per {C:attention}Void Card{} in full deck",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+        },
     },
     loc_vars = function(self, info_queue, card)
         local card_ability = card and card.ability or self.config
