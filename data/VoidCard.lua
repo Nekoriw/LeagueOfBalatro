@@ -1,5 +1,12 @@
+SMODS.Atlas {
+    key = 'LeagueOfBalatro_Card',
+    path = "LeagueOfBalatro_Card.png",
+    px = 71,
+    py = 95
+}
 SMODS.Enhancement({
     key = "void",
+    atlas = "LeagueOfBalatro_Card",
     pos = { x = 0, y = 0 },
     discovered = false,
     config = {
