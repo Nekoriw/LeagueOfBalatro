@@ -11,6 +11,7 @@ SMODS.Enhancement({
     pos = { x = 0, y = 0 },
     discovered = true,
     config = {
+        void_count = 0,
         extra = {
             mult = 0,
             mult_gain = 0.5
@@ -31,9 +32,16 @@ SMODS.Enhancement({
         }
     end,
     calculate = function(self, card, context)
+        card.ability.void_count = 0
+        for k, v in pairs(G.playing_cards) do
+            if SMODS.has_enhancement(v, 'm_LeagueOfBalatro_void') then
+                card.ability.void_count = card.ability.void_count + card.ability.extra.mult_gain
+            end
+            card.ability.mult = card.ability.void_count
+        end
         if context.cardarea == G.play and context.main_scoring then
             return {
-                mult = card.ability.extra.mult_gain
+                mult = card.ability.mult
             }
         end
     end
