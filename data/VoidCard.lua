@@ -37,11 +37,11 @@ SMODS.Enhancement({
             if SMODS.has_enhancement(v, 'm_LeagueOfBalatro_void') then
                 card.ability.void_count = card.ability.void_count + card.ability.extra.mult_gain
             end
-            card.ability.mult = card.ability.void_count
+            card.ability.extra.mult = card.ability.void_count
         end
         if context.cardarea == G.play and context.main_scoring then
             return {
-                mult = card.ability.mult
+                mult = card.ability.extra.mult
             }
         end
     end
