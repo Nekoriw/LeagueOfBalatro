@@ -49,22 +49,30 @@ SMODS.Consumable {
         return { vars = {} }
     end,
     can_use = function(self, card)
-        if G and G.hand and G.hand.highlighted and card.ability and card.ability.extra and card.ability.extra.cards then
-            if #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards then
-                return true
-            end
+        if G and G.hand and card.ability and card.ability.extra and card.ability.extra.cards then
+            return true
         end
         return false
     end,
     use = function(self)
-        -- Check if highlighted cards exist
-        if not G.hand.highlighted or #G.hand.highlighted == 0 then
-            return false
+        local cards = {}
+        for k, v in ipairs(G.hand.cards) do
+            cards[#cards + 1] = v
+        end
+
+        -- Shuffle the cards in cards
+        pseudoshuffle(cards, pseudoseed('voidgrubs'))
+
+        -- turn 3 cards into void cards
+        local choosen_cards = {}
+        for i = 1, 3 do
+            local choosen = cards[i]
+            choosen_cards[#choosen_cards + 1] = choosen
         end
 
         -- Convert 3 cards into the void cards
-        for i = 1, #G.hand.highlighted do
-            local target_card = G.hand.highlighted[i]
+        for i = 1, #choosen_cards do
+            local target_card = choosen_cards[i]
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 target_card:flip(),
