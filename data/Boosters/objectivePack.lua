@@ -1,14 +1,16 @@
 SMODS.Atlas {
-    key = "LeagueOfBalatro_Jokers",
-    path = "LeagueOfBalatro_Jokers.png",
+    key = "LeagueOfBalatro_Consumables",
+    path = "LeagueOfBalatro_Consumables.png",
     px = 71,
     py = 95
 }
 
 -- voidgrubs
 SMODS.Consumable {
-    key = 'voidgrubs',      -- key
-    set = 'Tarot',          -- the set of the card: corresponds to a consumable type
+    key = 'voidgrubs', -- key
+    set = 'Tarot',     -- the set of the card: corresponds to a consumable type
+    atlas = 'LeagueOfBalatro_Card',
+    pos = { x = 0, y = 0 },
     loc_txt = {
         name = 'Voidgrubs', -- name of card
         text = {            -- text of card
@@ -60,8 +62,10 @@ SMODS.Consumable {
 
 -- Shelly
 SMODS.Consumable {
-    key = 'shelly',      -- key
-    set = 'Tarot',       -- the set of the card: corresponds to a consumable type
+    key = 'shelly', -- key
+    set = 'Tarot',  -- the set of the card: corresponds to a consumable type
+    atlas = 'LeagueOfBalatro_Card',
+    pos = { x = 1, y = 0 },
     loc_txt = {
         name = 'Shelly', -- name of card
         text = {         -- text of card
