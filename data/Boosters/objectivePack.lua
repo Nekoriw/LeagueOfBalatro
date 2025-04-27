@@ -5,10 +5,28 @@ SMODS.Atlas {
     py = 95
 }
 
+--Objective Pack
+SMODS.ConsumableType {
+    key = 'ObjectivePack',                                 -- consumable type key
+
+    collection_rows = { 4, 5 },                            -- amount of cards in one page
+    primary_colour = G.C.PURPLE,                           -- first color
+    secondary_colour = HEX('D94496'),                      -- second color
+    loc_txt = {
+        collection = 'Objective Cards',                    -- name displayed in collection
+        name = 'Objective Card',                           -- name displayed in badge
+        undiscovered = {
+            name = 'Hidden Objective',                     -- undiscovered name
+            text = { 'Find this card in an unseeded run' } -- undiscovered text
+        }
+    },
+    shop_rate = 1, -- rate in shop out of 100
+}
+
 -- voidgrubs
 SMODS.Consumable {
-    key = 'voidgrubs', -- key
-    set = 'Tarot',     -- the set of the card: corresponds to a consumable type
+    key = 'voidgrubs',     -- key
+    set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 0, y = 0 },
     loc_txt = {
@@ -65,8 +83,8 @@ SMODS.Consumable {
 
 -- Shelly
 SMODS.Consumable {
-    key = 'shelly', -- key
-    set = 'Tarot',  -- the set of the card: corresponds to a consumable type
+    key = 'shelly',        -- key
+    set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 1, y = 0 },
     loc_txt = {
