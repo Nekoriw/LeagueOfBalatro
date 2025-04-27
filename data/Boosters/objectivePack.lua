@@ -9,7 +9,7 @@ SMODS.Atlas {
 SMODS.Consumable {
     key = 'voidgrubs', -- key
     set = 'Tarot',     -- the set of the card: corresponds to a consumable type
-    atlas = 'LeagueOfBalatro_Card',
+    atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 0, y = 0 },
     loc_txt = {
         name = 'Voidgrubs', -- name of card
@@ -49,8 +49,11 @@ SMODS.Consumable {
             local target_card = G.hand.highlighted[i]
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
+                target_card:flip(),
                 delay = 0.2,
                 func = function()
+                    play_sound('tarot1', 1.1, 0.6)
+                    target_card:flip()
                     target_card:set_ability('m_LeagueOfBalatro_void', true)
                     return true
                 end
@@ -64,7 +67,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'shelly', -- key
     set = 'Tarot',  -- the set of the card: corresponds to a consumable type
-    atlas = 'LeagueOfBalatro_Card',
+    atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 1, y = 0 },
     loc_txt = {
         name = 'Shelly', -- name of card
@@ -99,13 +102,16 @@ SMODS.Consumable {
             return false
         end
 
-        -- Convert 3 cards into the void cards
+        -- Convert selected card into void card
         for i = 1, #G.hand.highlighted do
             local target_card = G.hand.highlighted[i]
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
+                target_card:flip(),
                 delay = 0.2,
                 func = function()
+                    play_sound('tarot1', 1.1, 0.6)
+                    target_card:flip()
                     target_card:set_ability('m_LeagueOfBalatro_void', true)
                     return true
                 end
