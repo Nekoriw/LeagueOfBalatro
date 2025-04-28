@@ -145,4 +145,49 @@ SMODS.Consumable {
         end
         return true
     end,
+
+    -- Baron Nashor
+    SMODS.Consumable {
+        key = 'nashor',        -- key
+        set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
+        atlas = 'LeagueOfBalatro_Consumables',
+        pos = { x = 2, y = 0 },
+        loc_txt = {
+            name = 'Baron Nashor', -- name of card
+            text = {               -- text of card
+                'Give {C:attention}#1#${} for each',
+                '{C:attention}Void Card{} in full deck',
+            }
+        },
+        config = {
+            extra = {
+                money = 2,
+                total = 0,
+            }
+        },
+
+        loc_vars = function(self, info_queue, center)
+            if center and center.ability and center.ability.extra then
+                return { vars = { center.ability.extra.money } }
+            end
+            return { vars = {} }
+        end,
+        can_use = function(self, card)
+            if G and G.hand and card.ability and card.ability.extra then
+                return true
+            end
+            return false
+        end,
+        use = function(self, card)
+            -- calculate number of void cards in full deck
+            local void_count = 0
+            for k, v in pairs(G.playing_cards) do
+                if SMODS.has_enhancement(v, 'm_LeagueOfBalatro_void') then
+                    void_count = void_count + 1
+                end
+            end
+
+            ease_dollars(2 * void_count)
+        end,
+    }
 }
