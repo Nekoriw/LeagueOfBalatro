@@ -156,7 +156,8 @@ SMODS.Joker({
             "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
             "reset and gain {C:mult}+0.5{} Mult per hand",
-            "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}"
+            "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}",
+            "{C:inactive}(Art by @Nasth){}"
         },
     },
     config = {
