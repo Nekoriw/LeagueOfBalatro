@@ -21,8 +21,7 @@ SMODS.Enhancement({
         name = "Void Card",
         text = {
             "Gain {C:mult}+#2#{} Mult",
-            "per {C:attention}Void Card{} in full deck",
-            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+            "per {C:attention}Void Card{} in full deck"
         },
     },
     loc_vars = function(self, info_queue, card)

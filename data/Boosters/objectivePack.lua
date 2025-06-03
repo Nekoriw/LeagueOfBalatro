@@ -7,7 +7,7 @@ SMODS.Atlas {
 
 --Objective Pack
 SMODS.ConsumableType {
-    key = 'ObjectivePack',                                 -- consumable type key
+    key = 'ObjectiveCard',                                 -- consumable type key
 
     collection_rows = { 4, 5 },                            -- amount of cards in one page
     primary_colour = G.C.PURPLE,                           -- first color
@@ -23,10 +23,40 @@ SMODS.ConsumableType {
     shop_rate = 1, -- rate in shop out of 100
 }
 
+SMODS.Booster {
+    key = 'ObjectiveBooster',
+    loc_txt = {
+        name = "Objective Pack",
+        text = {
+            'Choose {C:attention}#1#{} of up to',
+            '{C:attention}#2#{} {C:D94496}Objective{} cards to',
+            'be used immediately',
+        },
+        group_name = "Objective Pack",
+    },
+
+    draw_hand = true,
+    config = {
+        extra = 2,
+        choose = 1,
+    },
+
+    cost = 4,
+    weight = 2,
+
+    create_card = function(self, card, i)
+        return SMODS.create_card({
+            skip_materialize = true,
+            set = "ObjectiveCard",
+            area = G.pack_cards,
+        })
+    end,
+}
+
 -- voidgrubs
 SMODS.Consumable {
     key = 'voidgrubs',     -- key
-    set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
+    set = 'ObjectiveCard', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 0, y = 0 },
     loc_txt = {
@@ -92,7 +122,7 @@ SMODS.Consumable {
 -- Shelly
 SMODS.Consumable {
     key = 'shelly',        -- key
-    set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
+    set = 'ObjectiveCard', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
     pos = { x = 1, y = 0 },
     loc_txt = {
@@ -149,7 +179,7 @@ SMODS.Consumable {
     -- Baron Nashor
     SMODS.Consumable {
         key = 'nashor',        -- key
-        set = 'ObjectivePack', -- the set of the card: corresponds to a consumable type
+        set = 'ObjectiveCard', -- the set of the card: corresponds to a consumable type
         atlas = 'LeagueOfBalatro_Consumables',
         pos = { x = 2, y = 0 },
         loc_txt = {
