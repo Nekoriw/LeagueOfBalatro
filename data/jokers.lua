@@ -131,7 +131,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 0 },
     cost = 4,
 
     calculate = function(self, card, context)
@@ -155,14 +155,14 @@ SMODS.Joker({
         text = {
             "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+1{} Mult per hand",
+            "reset and gain {C:mult}+0.5{} Mult per hand",
             "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}"
         },
     },
     config = {
         extra = {
             mult = 0,
-            gain_mult = 1
+            gain_mult = 0.5
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -176,7 +176,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    pos = { x = 3, y = 0 },
+    pos = { x = 2, y = 0 },
     cost = 6,
 
     calculate = function(self, card, context)
@@ -190,7 +190,7 @@ SMODS.Joker({
 
         if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
             card.ability.extra.mult = 0
-            card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
+            card.ability.extra.gain_mult = card.ability.extra.gain_mult + 0.5
             return {
                 message = 'Reset',
                 colour = G.C.RED
