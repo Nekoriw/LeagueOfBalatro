@@ -32,7 +32,6 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 0, y = 0 },
     cost = 3,
 
 
@@ -53,7 +52,6 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "diana",
@@ -82,7 +80,6 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 1, y = 0 },
     cost = 3,
 
 
@@ -103,7 +100,6 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "zilean",
@@ -131,7 +127,6 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    pos = { x = 3, y = 0 },
     cost = 4,
 
     calculate = function(self, card, context)
@@ -146,7 +141,6 @@ SMODS.Joker({
             end
         end
     end,
-    atlas = "LeagueOfBalatro_Jokers"
 })
 SMODS.Joker({
     key = "naafiri",
@@ -233,7 +227,6 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    pos = { x = 4, y = 0 },
     cost = 6,
 
     calculate = function(self, card, context)
@@ -251,5 +244,4 @@ SMODS.Joker({
             }
         end
     end,
-    atlas = "LeagueOfBalatro_Jokers"
 })
