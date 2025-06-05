@@ -24,7 +24,7 @@ SMODS.ConsumableType {
 }
 
 SMODS.Booster {
-    key = 'JungleBooster',
+    key = 'JungleBooster1',
     loc_txt = {
         name = "Jungle Pack",
         text = {
@@ -42,6 +42,96 @@ SMODS.Booster {
     },
 
     cost = 4,
+    weight = 5,
+
+    create_card = function(self, card, i)
+        return SMODS.create_card({
+            skip_materialize = true,
+            set = "JungleCard",
+            area = G.pack_cards,
+        })
+    end,
+}
+
+SMODS.Booster {
+    key = 'JungleBooster2',
+    loc_txt = {
+        name = "Jungle Pack",
+        text = {
+            'Choose {C:attention}#1#{} of up to',
+            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            'be used immediately',
+        },
+        group_name = "Jungle Pack",
+    },
+
+    draw_hand = true,
+    config = {
+        extra = 2,
+        choose = 1,
+    },
+
+    cost = 4,
+    weight = 5,
+
+    create_card = function(self, card, i)
+        return SMODS.create_card({
+            skip_materialize = true,
+            set = "JungleCard",
+            area = G.pack_cards,
+        })
+    end,
+}
+
+SMODS.Booster {
+    key = 'JumboJungleBooster',
+    loc_txt = {
+        name = "Jungle Pack",
+        text = {
+            'Choose {C:attention}#1#{} of up to',
+            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            'be used immediately',
+        },
+        group_name = "Jungle Pack",
+    },
+
+    draw_hand = true,
+    config = {
+        extra = 4,
+        choose = 1,
+    },
+
+    cost = 6,
+    weight = 3,
+
+    create_card = function(self, card, i)
+        return SMODS.create_card({
+            skip_materialize = true,
+            set = "JungleCard",
+            area = G.pack_cards,
+        })
+    end,
+}
+
+SMODS.Booster {
+    key = 'MegaJungleBooster',
+    loc_txt = {
+        name = "Jungle Pack",
+        text = {
+            'Choose {C:attention}#1#{} of up to',
+            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            'be used immediately',
+        },
+        group_name = "Jungle Pack",
+    },
+
+    draw_hand = true,
+    config = {
+        extra = 4,
+        choose = 2,
+    },
+
+    cost = 8,
     weight = 2,
 
     create_card = function(self, card, i)
