@@ -13,8 +13,8 @@ SMODS.ConsumableType {
     primary_colour = G.C.PURPLE,                           -- first color
     secondary_colour = HEX('2E6F40'),                      -- second color
     loc_txt = {
-        collection = 'Objective Cards',                    -- name displayed in collection
-        name = 'Objective Card',                           -- name displayed in badge
+        collection = 'Jungle Cards',                       -- name displayed in collection
+        name = 'Jungle Card',                              -- name displayed in badge
         undiscovered = {
             name = 'Hidden Objective',                     -- undiscovered name
             text = { 'Find this card in an unseeded run' } -- undiscovered text
@@ -24,15 +24,15 @@ SMODS.ConsumableType {
 }
 
 SMODS.Booster {
-    key = 'ObjectiveBooster',
+    key = 'JungleBooster',
     loc_txt = {
-        name = "Objective Pack",
+        name = "Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
             '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
             'be used immediately',
         },
-        group_name = "Objective Pack",
+        group_name = "Jungle Pack",
     },
 
     draw_hand = true,
