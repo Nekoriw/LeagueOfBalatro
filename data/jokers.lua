@@ -155,7 +155,7 @@ SMODS.Joker({
         text = {
             "Each hand played, gain {C:mult}+#2#{} Mult.",
             "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+0.5{} Mult per hand",
+            "reset and gain {C:mult}+1{} Mult per hand",
             "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}",
             "{C:inactive}(Art by @Nasth){}"
         },
@@ -163,7 +163,7 @@ SMODS.Joker({
     config = {
         extra = {
             mult = 0,
-            gain_mult = 0.5
+            gain_mult = 1
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -191,7 +191,7 @@ SMODS.Joker({
 
         if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
             card.ability.extra.mult = 0
-            card.ability.extra.gain_mult = card.ability.extra.gain_mult + 0.5
+            card.ability.extra.gain_mult = card.ability.extra.gain_mult + 1
             return {
                 message = 'Reset',
                 colour = G.C.RED
