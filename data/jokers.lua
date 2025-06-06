@@ -5,6 +5,7 @@ SMODS.Atlas {
     py = 95
 }
 
+-- Khazix
 SMODS.Joker({
     key = "khazix",
     loc_txt = {
@@ -53,6 +54,8 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Diana
 SMODS.Joker({
     key = "diana",
     loc_txt = {
@@ -101,6 +104,8 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Zilean
 SMODS.Joker({
     key = "zilean",
     loc_txt = {
@@ -142,6 +147,8 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Naafiri
 SMODS.Joker({
     key = "naafiri",
     loc_txt = {
@@ -201,6 +208,7 @@ SMODS.Joker({
     atlas = "LeagueOfBalatro_Jokers"
 })
 
+-- Veigar
 SMODS.Joker({
     key = "veigar",
     loc_txt = {
@@ -242,6 +250,63 @@ SMODS.Joker({
             return {
                 chips = card.ability.extra.chips
             }
+        end
+    end,
+})
+
+-- Malphite
+SMODS.Joker({
+    key = "malphite",
+    loc_txt = {
+        name = "Malphite",
+        text = {
+            "{C:chips}+#1#{} Chips",
+            "When {C:attention}Stone card{} is scored",
+            "gain {C:chips}+#2#{} Chips"
+        },
+    },
+    config = {
+        extra = {
+            chips = 0,
+            gain_chips = 10,
+            stone_counter = 0
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips, card.ability.extra.gain_chips, card.ability.extra.stone_counter },
+        }
+    end,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 1,
+    cost = 4,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if SMODS.has_enhancement(context.other_card, 'm_stone') then
+                card.ability.extra.stone_counter = card.ability.extra.stone_counter + 1
+                return {
+                    message = 'Upgraded',
+                    message_card = card,
+                    colour = G.C.BLUE
+                }
+            end
+        end
+
+        if context.joker_main then
+            card.ability.extra.chips = card.ability.extra.chips +
+                (card.ability.extra.gain_chips * card.ability.extra.stone_counter)
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+
+        if context.after then
+            card.ability.extra.stone_counter = 0
         end
     end,
 })
