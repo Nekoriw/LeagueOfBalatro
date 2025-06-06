@@ -375,8 +375,8 @@ SMODS.Consumable {
     set = 'JungleCard', -- the set of the card: corresponds to a consumable type
 
     loc_txt = {
-        name = 'Mountain Drake', -- name of card
-        text = {                 -- text of card
+        name = 'Ocean Drake', -- name of card
+        text = {              -- text of card
             'Turns {C:attention}#1#{} cards',
             'into {C:attention}Frozen Card{}',
         }
