@@ -133,6 +133,8 @@ SMODS.Joker({
     perishable_compat = true,
     rarity = 1,
     cost = 4,
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 0, y = 0 },
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
@@ -178,6 +180,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
+    atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 2, y = 0 },
     cost = 6,
 
@@ -205,7 +208,6 @@ SMODS.Joker({
             }
         end
     end,
-    atlas = "LeagueOfBalatro_Jokers"
 })
 
 -- Veigar
@@ -259,6 +261,63 @@ SMODS.Joker({
     key = "malphite",
     loc_txt = {
         name = "Malphite",
+        text = {
+            "{C:chips}+#1#{} Chips",
+            "When {C:attention}Stone card{} is scored",
+            "gain {C:chips}+#2#{} Chips"
+        },
+    },
+    config = {
+        extra = {
+            chips = 0,
+            gain_chips = 10,
+            stone_counter = 0
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips, card.ability.extra.gain_chips, card.ability.extra.stone_counter },
+        }
+    end,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 1,
+    cost = 4,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if SMODS.has_enhancement(context.other_card, 'm_stone') then
+                card.ability.extra.stone_counter = card.ability.extra.stone_counter + 1
+                return {
+                    message = 'Upgraded',
+                    message_card = card,
+                    colour = G.C.BLUE
+                }
+            end
+        end
+
+        if context.joker_main then
+            card.ability.extra.chips = card.ability.extra.chips +
+                (card.ability.extra.gain_chips * card.ability.extra.stone_counter)
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+
+        if context.after then
+            card.ability.extra.stone_counter = 0
+        end
+    end,
+})
+
+-- Hwei
+SMODS.Joker({
+    key = "hwei",
+    loc_txt = {
+        name = "Hwei",
         text = {
             "{C:chips}+#1#{} Chips",
             "When {C:attention}Stone card{} is scored",
