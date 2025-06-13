@@ -33,7 +33,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    cost = 3,
+    cost = 4,
 
 
     calculate = function(self, card, context)
@@ -83,7 +83,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    cost = 3,
+    cost = 4,
 
 
     calculate = function(self, card, context)
@@ -131,8 +131,8 @@ SMODS.Joker({
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 1,
-    cost = 4,
+    rarity = 2,
+    cost = 6,
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 0, y = 0 },
 
@@ -179,10 +179,10 @@ SMODS.Joker({
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 2,
+    rarity = 1,
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 2, y = 0 },
-    cost = 6,
+    cost = 4,
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers and not context.blueprint then
