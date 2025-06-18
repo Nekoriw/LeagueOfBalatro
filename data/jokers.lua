@@ -288,7 +288,7 @@ SMODS.Joker({
     cost = 4,
 
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
+        if context.individual and not context.blueprint and context.cardarea == G.play then
             if SMODS.has_enhancement(context.other_card, 'm_stone') then
                 card.ability.extra.stone_counter = card.ability.extra.stone_counter + 1
                 return {
@@ -309,6 +309,107 @@ SMODS.Joker({
 
         if context.after then
             card.ability.extra.stone_counter = 0
+        end
+    end,
+})
+
+-- Ivern
+SMODS.Joker({
+    key = "ivern",
+    loc_txt = {
+        name = "Ivern",
+        text = {
+            "{C:mult}+#1#{} Mult",
+            "Gain {C:mult}+#2#{} Mult per",
+            "{C:attention}jungle card{} used"
+        },
+    },
+
+    config = {
+        extra = {
+            mult = 0,
+            gain_mult = 1
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.mult, card.ability.extra.gain_mult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    calculate = function(self, card, context)
+        if context.using_consumeable and not context.blueprint then
+            if context.consumeable.config.center.set == 'JungleCard' then
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain_mult
+
+                return {
+                    message = 'Upgrade !',
+                    message_card = card,
+                    colour = G.C.RED
+                }
+            end
+        end
+
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+})
+
+-- Nilah
+SMODS.Joker({
+    key = "nilah",
+    loc_txt = {
+        name = "Nilah",
+        text = {
+            "When a {C:attention}planet card{}",
+            "is used, level up",
+            "a random hand"
+        },
+    },
+
+    config = {
+        extra = {
+
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    calculate = function(self, card, context)
+        if context.using_consumeable then
+            if context.consumeable.config.center.set == 'Planet' then
+                level_up_hand(card, pseudorandom_element(G.handlist, pseudoseed('seed')), nil, 1)
+
+                return {
+                    message = 'Level Up !',
+                    message_card = card,
+                    colour = G.C.BLUE
+                }
+            end
         end
     end,
 })
