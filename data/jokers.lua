@@ -113,7 +113,7 @@ SMODS.Joker({
         text = {
             "Every {C:attention}3 hands{},",
             "Zilean level up the played hand",
-            "{C:inactive}(In #1# hands)"
+            "{C:inactive}(#1# remaining)"
         },
     },
     config = {
@@ -409,6 +409,92 @@ SMODS.Joker({
                     message_card = card,
                     colour = G.C.BLUE
                 }
+            end
+        end
+    end,
+})
+
+-- Sejuani
+SMODS.Joker({
+    key = "sejuani",
+    loc_txt = {
+        name = "Sejuani",
+        text = {
+            "Every #1# hands containing a {C:attention}frozen card{}",
+            "{C:attention}freeze{} all cards in {C:attention}played hand{}",
+            "{C:inactive}(When this triggers, add #2# required hands){}",
+            "{C:inactive}(#3# remaining){}"
+        },
+    },
+
+    config = {
+        extra = {
+            hand_need = 4,
+            hand_gain = 2,
+            hand_count = 4,
+            decrease = true
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.hand_need, card.ability.extra.hand_gain, card.ability.extra.hand_count },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    calculate = function(self, card, context)
+        if context.before then
+            card.ability.extra.decrease = false
+            for k, v in pairs(context.scoring_hand) do
+                for i = 1, #context.scoring_hand do
+                    local target_card = context.scoring_hand[i]
+                    if SMODS.has_enhancement(target_card, 'm_LeagueOfBalatro_frozen') then
+                        card.ability.extra.decrease = true
+                    end
+                end
+            end
+
+            --decrease stacks
+            if card.ability.extra.decrease == true then
+                card.ability.extra.hand_count = card.ability.extra.hand_count - 1
+
+                --freeze cards if needed
+                if card.ability.extra.hand_count == 0 then
+                    for k, v in pairs(context.scoring_hand) do
+                        for i = 1, #context.scoring_hand do
+                            local target_card = context.scoring_hand[i]
+                            target_card:set_ability("m_LeagueOfBalatro_frozen", true)
+                        end
+                    end
+
+                    return {
+                        message = 'Freeze !',
+                        message_card = card,
+                        colour = G.C.BLUE
+                    }
+                end
+
+                return {
+                    message = 'Stacking !',
+                    message_card = card,
+                    colour = G.C.BLUE
+                }
+            end
+        end
+
+        --reset the joker, and increase the stacks needed
+        if context.after then
+            if card.ability.extra.hand_count == 0 then
+                card.ability.extra.hand_need = card.ability.extra.hand_need + card.ability.extra.hand_gain
+                card.ability.extra.hand_count = card.ability.extra.hand_need
             end
         end
     end,
