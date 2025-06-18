@@ -35,6 +35,9 @@ SMODS.Joker({
     rarity = 1,
     cost = 4,
 
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 5, y = 0 },
+
 
     calculate = function(self, card, context)
         if context.before and #context.full_hand == 1 and not context.blueprint then
@@ -85,6 +88,8 @@ SMODS.Joker({
     rarity = 1,
     cost = 4,
 
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 4, y = 0 },
 
     calculate = function(self, card, context)
         if context.before and context.scoring_name == 'Three of a Kind' and not context.blueprint then
@@ -134,7 +139,7 @@ SMODS.Joker({
     rarity = 2,
     cost = 6,
     atlas = "LeagueOfBalatro_Jokers",
-    pos = { x = 0, y = 0 },
+    pos = { x = 1, y = 0 },
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
@@ -180,7 +185,7 @@ SMODS.Joker({
     perishable_compat = true,
     rarity = 1,
     atlas = "LeagueOfBalatro_Jokers",
-    pos = { x = 2, y = 0 },
+    pos = { x = 0, y = 0 },
     cost = 4,
 
     calculate = function(self, card, context)
@@ -238,6 +243,9 @@ SMODS.Joker({
     rarity = 2,
     cost = 6,
 
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 2, y = 0 },
+
     calculate = function(self, card, context)
         if context.end_of_round and G.GAME.blind.boss and not context.repetition and not context.individual and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips * 2
@@ -285,6 +293,9 @@ SMODS.Joker({
     perishable_compat = true,
     rarity = 1,
     cost = 4,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 3, y = 0 },
 
     calculate = function(self, card, context)
         if context.individual and not context.blueprint and context.cardarea == G.play then
@@ -345,6 +356,9 @@ SMODS.Joker({
     rarity = 2,
     cost = 6,
 
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 7, y = 0 },
+
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint then
             if context.consumeable.config.center.set == 'JungleCard' then
@@ -398,6 +412,9 @@ SMODS.Joker({
     rarity = 2,
     cost = 6,
 
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 6, y = 0 },
+
     calculate = function(self, card, context)
         if context.using_consumeable then
             if context.consumeable.config.center.set == 'Planet' then
@@ -448,6 +465,9 @@ SMODS.Joker({
     perishable_compat = true,
     rarity = 3,
     cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 8, y = 0 },
 
     calculate = function(self, card, context)
         if context.before then

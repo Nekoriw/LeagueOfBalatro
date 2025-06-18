@@ -16,7 +16,7 @@ SMODS.ConsumableType {
         collection = 'Jungle Cards',                       -- name displayed in collection
         name = 'Jungle Card',                              -- name displayed in badge
         undiscovered = {
-            name = 'Hidden Objective',                     -- undiscovered name
+            name = 'Hidden Card',                          -- undiscovered name
             text = { 'Find this card in an unseeded run' } -- undiscovered text
         }
     },
@@ -214,7 +214,7 @@ SMODS.Consumable {
     key = 'shelly',     -- key
     set = 'JungleCard', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
-    pos = { x = 1, y = 0 },
+    pos = { x = 4, y = 0 },
     loc_txt = {
         name = 'Shelly', -- name of card
         text = {         -- text of card
@@ -272,7 +272,7 @@ SMODS.Consumable {
     key = 'nashor',     -- key
     set = 'JungleCard', -- the set of the card: corresponds to a consumable type
     atlas = 'LeagueOfBalatro_Consumables',
-    pos = { x = 2, y = 0 },
+    pos = { x = 1, y = 0 },
     loc_txt = {
         name = 'Baron Nashor', -- name of card
         text = {               -- text of card
@@ -314,7 +314,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'mountainDrake', -- key
     set = 'JungleCard',    -- the set of the card: corresponds to a consumable type
-
+    atlas = 'LeagueOfBalatro_Consumables',
+    pos = { x = 2, y = 0 },
     loc_txt = {
         name = 'Mountain Drake', -- name of card
         text = {                 -- text of card
@@ -373,7 +374,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'oceanDrake', -- key
     set = 'JungleCard', -- the set of the card: corresponds to a consumable type
-
+    atlas = 'LeagueOfBalatro_Consumables',
+    pos = { x = 3, y = 0 },
     loc_txt = {
         name = 'Ocean Drake', -- name of card
         text = {              -- text of card
@@ -432,7 +434,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'gromp',      -- key
     set = 'JungleCard', -- the set of the card: corresponds to a consumable type
-
+    atlas = 'LeagueOfBalatro_Consumables',
+    pos = { x = 5, y = 0 },
     loc_txt = {
         name = 'Gromp', -- name of card
         text = {        -- text of card
@@ -492,7 +495,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'scuttle',
     set = 'JungleCard',
-
+    atlas = 'LeagueOfBalatro_Consumables',
+    pos = { x = 6, y = 0 },
     loc_txt = {
         name = 'Scuttle Crab', -- name of card
         text = {               -- text of card
