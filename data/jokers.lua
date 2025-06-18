@@ -420,7 +420,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Sejuani",
         text = {
-            "Every #1# hands containing a {C:attention}frozen card{}",
+            "Every {C:attention}#1#{} hands containing a {C:attention}frozen card{}",
             "{C:attention}freeze{} all cards in {C:attention}played hand{}",
             "{C:inactive}(When this triggers, add #2# required hands){}",
             "{C:inactive}(#3# remaining){}"
