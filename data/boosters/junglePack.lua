@@ -487,3 +487,45 @@ SMODS.Consumable {
         return true
     end,
 }
+
+-- Scuttle
+SMODS.Consumable {
+    key = 'scuttle',
+    set = 'JungleCard',
+
+    loc_txt = {
+        name = 'Scuttle Crab', -- name of card
+        text = {               -- text of card
+            'Create {C:attention}#1#{} random',
+            'Jungle Cards',
+        }
+    },
+
+    config = {
+        extra = {
+            cards = 2, -- configurable value
+        }
+    },
+
+    loc_vars = function(self, info_queue, center)
+        return { vars = { center.ability.extra.cards } }
+    end,
+
+    can_use = function(self, card)
+        if G and G.hand and G.hand.highlighted and card.ability and card.ability.extra and card.ability.extra.cards then
+            return true
+        end
+        return false
+    end,
+
+    use = function(self, card)
+        for i = 1, 2 do
+            SMODS.add_card({
+                skip_materialize = true,
+                set = "JungleCard",
+                no_edition = true,
+                area = G.consumeables,
+            })
+        end
+    end
+}

@@ -4,7 +4,7 @@
     "author": [
         "Nekoriw"
     ],
-    "description": "A Balatro mod, based on the game League Of Legends",
+    "description": "A Balatro mod, based on the game League Of Legends / Art by @Nasth, Code by @Nekoriw",
     "prefix": "LeagueOfBalatro",
     "main_file": "main.lua",
     "priority": 0,
