@@ -5,6 +5,13 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = "LeagueOfBalatro_Booster",
+    path = "LeagueOfBalatro_Booster.png",
+    px = 71,
+    py = 95
+}
+
 --Objective Pack
 SMODS.ConsumableType {
     key = 'JungleCard',                                    -- consumable type key
@@ -23,6 +30,7 @@ SMODS.ConsumableType {
     shop_rate = 1, -- rate in shop out of 100
 }
 
+--Booster 1
 SMODS.Booster {
     key = 'JungleBooster1',
     loc_txt = {
@@ -34,6 +42,8 @@ SMODS.Booster {
         },
         group_name = "Jungle Pack",
     },
+    atlas = 'LeagueOfBalatro_Booster',
+    pos = { x = 0, y = 0 },
 
     draw_hand = true,
     config = {
@@ -53,6 +63,7 @@ SMODS.Booster {
     end,
 }
 
+--Booster 2
 SMODS.Booster {
     key = 'JungleBooster2',
     loc_txt = {
@@ -64,6 +75,8 @@ SMODS.Booster {
         },
         group_name = "Jungle Pack",
     },
+    atlas = 'LeagueOfBalatro_Booster',
+    pos = { x = 1, y = 0 },
 
     draw_hand = true,
     config = {
@@ -83,10 +96,11 @@ SMODS.Booster {
     end,
 }
 
+--Jumbo Booster
 SMODS.Booster {
     key = 'JumboJungleBooster',
     loc_txt = {
-        name = "Jungle Pack",
+        name = "Jumbo Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
             '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
@@ -94,6 +108,8 @@ SMODS.Booster {
         },
         group_name = "Jungle Pack",
     },
+    atlas = 'LeagueOfBalatro_Booster',
+    pos = { x = 2, y = 0 },
 
     draw_hand = true,
     config = {
@@ -113,10 +129,11 @@ SMODS.Booster {
     end,
 }
 
+--Mega Booster
 SMODS.Booster {
     key = 'MegaJungleBooster',
     loc_txt = {
-        name = "Jungle Pack",
+        name = "Mega Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
             '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
@@ -124,10 +141,12 @@ SMODS.Booster {
         },
         group_name = "Jungle Pack",
     },
+    atlas = 'LeagueOfBalatro_Booster',
+    pos = { x = 3, y = 0 },
 
     draw_hand = true,
     config = {
-        extra = 6,
+        extra = 5,
         choose = 2,
     },
 
