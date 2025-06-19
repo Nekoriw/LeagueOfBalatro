@@ -569,3 +569,46 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Alistar
+SMODS.Joker({
+    key = "alistar",
+    loc_txt = {
+        name = "Alistar",
+        text = {
+            "Gain {C:chips}x0.1{} chips per {C:attention}10${} you have",
+            "{C:inactive}(Currently {C:chips}x#1#{C:inactive} Chips)"
+        },
+    },
+
+    config = {
+        extra = {
+
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { 1 + math.floor(G.GAME.dollars / 10) * 0.1 },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 2, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = 1 + math.floor(G.GAME.dollars / 10) * 0.1
+            }
+        end
+    end,
+})
