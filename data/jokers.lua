@@ -269,9 +269,9 @@ SMODS.Joker({
     loc_txt = {
         name = "Malphite",
         text = {
-            "{C:chips}+#1#{} Chips",
             "When {C:attention}Stone card{} is scored",
-            "gain {C:chips}+#2#{} Chips"
+            "gain {C:chips}+#2#{} Chips",
+            "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}"
         },
     },
     config = {
@@ -329,9 +329,9 @@ SMODS.Joker({
     loc_txt = {
         name = "Ivern",
         text = {
-            "{C:mult}+#1#{} Mult",
             "Gain {C:mult}+#2#{} Mult per",
-            "{C:attention}jungle card{} used"
+            "{C:attention}jungle card{} used",
+            "{C:inactive}(Currently {}{C:mult}+#1#{}{C:inactive} Mult){}"
         },
     },
 
@@ -515,6 +515,53 @@ SMODS.Joker({
                 card.ability.extra.hand_need = card.ability.extra.hand_need + card.ability.extra.hand_gain
                 card.ability.extra.hand_count = card.ability.extra.hand_need
             end
+        end
+    end,
+})
+
+-- Ornn
+SMODS.Joker({
+    key = "ornn",
+    loc_txt = {
+        name = "Ornn",
+        text = {
+            "When {C:attention}Blind{} is selected",
+            "Create a random {C:attention}consumable{}"
+        },
+    },
+
+    config = {
+        extra = {
+
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 4, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            SMODS.add_card({
+                skip_materialize = true,
+                set = "Consumeables",
+                soulable = false,
+                no_edition = true,
+                area = G.consumeables,
+            })
         end
     end,
 })
