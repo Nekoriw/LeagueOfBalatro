@@ -562,6 +562,12 @@ SMODS.Joker({
                 no_edition = true,
                 area = G.consumeables,
             })
+
+            return {
+                message = 'Crafted !',
+                message_card = card,
+                colour = G.C.BLUE
+            }
         end
     end,
 })
