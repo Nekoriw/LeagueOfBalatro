@@ -576,7 +576,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Alistar",
         text = {
-            "Gain {C:chips}x0.1{} chips per {C:attention}10${} you have",
+            "Gain {C:chips}x0.1{} chips",
+            "per {C:attention}10${} you have",
             "{C:inactive}(Currently {C:chips}x#1#{C:inactive} Chips)"
         },
     },
@@ -608,6 +609,72 @@ SMODS.Joker({
         if context.joker_main then
             return {
                 xchips = 1 + math.floor(G.GAME.dollars / 10) * 0.1
+            }
+        end
+    end,
+})
+
+-- Kai'sa
+SMODS.Joker({
+    key = "kaisa",
+    loc_txt = {
+        name = "Kai'Sa",
+        text = {
+            "Gain {C:mult}x#1#{} Mult and remove enhancement",
+            "When a {C:attention}Void Card{} is scored",
+            "{C:inactive}(Currently {C:mult}x#2#{C:inactive} Mult)"
+        },
+    },
+
+    config = {
+        extra = {
+            gain_mult = 0.25,
+            xmult = 1
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.gain_mult, card.ability.extra.xmult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 3, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint and context.cardarea == G.jokers then
+            local removed = false
+            for k, v in pairs(context.scoring_hand) do
+                for i = 1, #context.scoring_hand do
+                    local target_card = context.scoring_hand[i]
+                    if SMODS.has_enhancement(target_card, 'm_LeagueOfBalatro_void') then
+                        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.gain_mult
+                        target_card:set_ability(G.P_CENTERS.c_base)
+                        removed = true
+                    end
+                end
+            end
+            if removed then
+                return {
+                    message = 'Upgraded',
+                    message_card = card,
+                    colour = G.C.RED
+                }
+            end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
             }
         end
     end,
