@@ -739,3 +739,69 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Evelynn
+SMODS.Joker({
+    key = "evelynn",
+    loc_txt = {
+        name = "Evelynn",
+        text = {
+            "If {C:attention}first discard{} of the round has {C:attention}1{} card :",
+            "Transform a {C:attention}Non-Heart{} card into an Heart",
+            "{C:inactive}(If it's already an Heart, destroy it){}"
+        },
+    },
+
+    config = {
+        extra = {
+
+        },
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 2, y = 2 },
+
+    calculate = function(self, card, context)
+        if context.discard and not context.hook then
+            if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
+                local target_card = context.full_hand[1]
+
+                -- Heart
+                if target_card.base.suit == 'Hearts' then
+                    SMODS.destroy_cards({ target_card })
+                    return {
+                        message = 'Destroyed!',
+                        message_card = card,
+                        colour = G.C.RED
+                    }
+                end
+
+                -- Non-heart
+                if target_card.base.suit ~= 'Hearts' then
+                    SMODS.change_base(target_card, 'Hearts')
+                    return {
+                        message = 'Charmed!',
+                        message_card = card,
+                        colour = G.C.RED
+                    }
+                end
+            end
+        end
+    end,
+})
+
+-- G.GAME.current_round.hands_played
