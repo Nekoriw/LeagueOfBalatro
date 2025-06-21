@@ -679,3 +679,63 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Asol
+SMODS.Joker({
+    key = "aurelion",
+    loc_txt = {
+        name = "Aurelion Sol",
+        text = {
+            "When a {C:attention}diamond{} card is scored,",
+            "Gain 1 stack. At 75 stacks, create a {C:attention}Black Hole{}",
+            "{C:inactive}(Currently {C:chips}#1#{C:inactive} stacks)"
+        },
+    },
+
+    config = {
+        extra = {
+            stacks = 0
+        },
+        loc_def = 'on_individual'
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.stacks },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 5, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+            if context.other_card.base.suit == 'Diamonds' then
+                card.ability.extra.stacks = card.ability.extra.stacks + 1
+                if card.ability.extra.stacks >= 75 then
+                    card.ability.extra.stacks = 0
+                    SMODS.add_card({ key = "c_black_hole" })
+                    return {
+                        message = 'Crafted !',
+                        message_card = card,
+                        colour = G.C.RED
+                    }
+                else
+                    return {
+                        message = 'Upgraded !',
+                        message_card = card,
+                        colour = G.C.BLUE
+                    }
+                end
+            end
+        end
+    end,
+})
