@@ -140,7 +140,7 @@ SMODS.Joker({
     pos = { x = 1, y = 0 },
 
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers then
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.hands = card.ability.extra.hands - 1
             if (card.ability.extra.hands == 0) then
                 card.ability.extra.hands = 3
@@ -315,7 +315,7 @@ SMODS.Joker({
             }
         end
 
-        if context.after then
+        if context.after and not context.blueprint then
             card.ability.extra.stone_counter = 0
         end
     end,
@@ -468,7 +468,7 @@ SMODS.Joker({
     pos = { x = 8, y = 0 },
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.before and not context.blueprint then
             card.ability.extra.decrease = false
             for k, v in pairs(context.scoring_hand) do
                 for i = 1, #context.scoring_hand do
@@ -508,7 +508,7 @@ SMODS.Joker({
         end
 
         --reset the joker, and increase the stacks needed
-        if context.after then
+        if context.after and not context.blueprint then
             if card.ability.extra.hand_count == 0 then
                 card.ability.extra.hand_need = card.ability.extra.hand_need + card.ability.extra.hand_gain
                 card.ability.extra.hand_count = card.ability.extra.hand_need
@@ -707,7 +707,7 @@ SMODS.Joker({
 
     unlocked = true,
     discovered = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     rarity = 3,
@@ -746,7 +746,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Evelynn",
         text = {
-            "If {C:attention}first discard{} of the round has {C:attention}1{} card :",
+            "If {C:attention}first discard{} of the round has only {C:attention}1{} card :",
             "Transform a {C:attention}Non-Heart{} card into an Heart",
             "{C:inactive}(If it's already an Heart, destroy it){}"
         },
@@ -766,7 +766,7 @@ SMODS.Joker({
 
     unlocked = true,
     discovered = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     rarity = 3,
@@ -776,7 +776,7 @@ SMODS.Joker({
     pos = { x = 2, y = 2 },
 
     calculate = function(self, card, context)
-        if context.discard and not context.hook then
+        if context.discard and not context.hook and not context.blueprint then
             if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then --if first discard has 1 card
                 local target_card = context.full_hand[1]
 
@@ -799,6 +799,51 @@ SMODS.Joker({
                         colour = G.C.RED
                     }
                 end
+            end
+        end
+    end,
+})
+
+-- Ahri
+SMODS.Joker({
+    key = "ahri",
+    loc_txt = {
+        name = "Ahri",
+        text = {
+            "If {C:attention}first hand{} of the round has only",
+            "{C:attention}1{} card {C:attention}Decreases{}",
+            "rank of the card by {C:attention}1{}"
+        },
+    },
+
+    config = {
+        extra = {
+        },
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 1, y = 2 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.hook then
+            if G.GAME.current_round.hands_played <= 0 and #context.full_hand == 1 then --if first discard has 1 card
+                local target_card = context.full_hand[1]
+
+                SMODS.modify_rank(target_card, -1)
             end
         end
     end,
