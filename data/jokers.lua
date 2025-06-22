@@ -576,9 +576,9 @@ SMODS.Joker({
     loc_txt = {
         name = "Alistar",
         text = {
-            "Gain {C:chips}x0.1{} chips",
+            "Gain {X:chips,C:white}X0.1{} chips",
             "per {C:attention}10${} you have",
-            "{C:inactive}(Currently {C:chips}x#1#{C:inactive} Chips)"
+            "{C:inactive}(Currently {X:chips,C:white}X#1#{}{C:inactive} Chips)"
         },
     },
 
@@ -620,9 +620,9 @@ SMODS.Joker({
     loc_txt = {
         name = "Kai'Sa",
         text = {
-            "Gain {C:mult}x#1#{} Mult and remove enhancement",
+            "Gain {X:mult,C:white}X#1#{} Mult and remove enhancement",
             "When a {C:attention}Void Card{} is scored",
-            "{C:inactive}(Currently {C:mult}x#2#{C:inactive} Mult)"
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult)"
         },
     },
 
@@ -777,7 +777,7 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.discard and not context.hook then
-            if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
+            if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then --if first discard has 1 card
                 local target_card = context.full_hand[1]
 
                 -- Heart
