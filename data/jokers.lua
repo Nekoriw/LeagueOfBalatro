@@ -849,4 +849,49 @@ SMODS.Joker({
     end,
 })
 
+-- Seraphine
+SMODS.Joker({
+    key = "seraphine",
+    loc_txt = {
+        name = "Seraphine",
+        text = {
+            "If {C:attention}first hand{} of the round has only",
+            "{C:attention}1{} card {C:attention}Increases{}",
+            "rank of the card by {C:attention}1{}"
+        },
+    },
+
+    config = {
+        extra = {
+        },
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    --atlas = "LeagueOfBalatro_Jokers",
+    --pos = { x = 1, y = 2 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.hook then
+            if G.GAME.current_round.hands_played <= 0 and #context.full_hand == 1 then --if first discard has 1 card
+                local target_card = context.full_hand[1]
+
+                SMODS.modify_rank(target_card, 1)
+            end
+        end
+    end,
+})
+
 -- G.GAME.current_round.hands_played
