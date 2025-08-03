@@ -171,8 +171,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Voidgrubs', -- name of card
         text = {            -- text of card
-            'Turns {C:attention}#1#{} randoms cards',
-            'into {C:attention}Void Card{}',
+            "Enhances {C:attention}#1#{} random cards",
+            "to {C:attention}Void Card{}"
         }
     },
     config = {
@@ -237,8 +237,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Shelly', -- name of card
         text = {         -- text of card
-            'Turns {C:attention}#1#{} card',
-            'into {C:attention}Void Card{}',
+            "Enhances {C:attention}#1#{} card",
+            "to {C:attention}Void Card{}"
         }
     },
     config = {
@@ -338,8 +338,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Mountain Drake', -- name of card
         text = {                 -- text of card
-            'Turns {C:attention}#1#{} cards',
-            'into {C:attention}Stone Card{}',
+            "Enhances {C:attention}#1#{} cards",
+            "to {C:attention}Stone Card{}"
         }
     },
     config = {
@@ -398,8 +398,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Ocean Drake', -- name of card
         text = {              -- text of card
-            'Turns {C:attention}#1#{} cards',
-            'into {C:attention}Frozen Card{}',
+            "Enhances {C:attention}#1#{} cards",
+            "to {C:attention}Frozen Card{}"
         }
     },
     config = {
