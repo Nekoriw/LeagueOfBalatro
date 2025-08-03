@@ -810,8 +810,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Ahri",
         text = {
-            "If {C:attention}first hand{} of the round has only",
-            "{C:attention}1{} card {C:attention}Decreases{}",
+            "If {C:attention}first hand{} of the round has",
+            "only {C:attention}1{} card {C:attention}Decreases{}",
             "rank of the card by {C:attention}1{}"
         },
     },
@@ -844,6 +844,12 @@ SMODS.Joker({
                 local target_card = context.full_hand[1]
 
                 SMODS.modify_rank(target_card, -1)
+
+                return {
+                    message = 'Decreased !',
+                    message_card = card,
+                    colour = G.C.RED
+                }
             end
         end
     end,
@@ -855,8 +861,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Seraphine",
         text = {
-            "If {C:attention}first hand{} of the round has only",
-            "{C:attention}1{} card {C:attention}Increases{}",
+            "If {C:attention}first hand{} of the round has",
+            "only {C:attention}1{} card {C:attention}Increases{}",
             "rank of the card by {C:attention}1{}"
         },
     },
@@ -889,9 +895,97 @@ SMODS.Joker({
                 local target_card = context.full_hand[1]
 
                 SMODS.modify_rank(target_card, 1)
+
+                return {
+                    message = 'Increased !',
+                    message_card = card,
+                    colour = G.C.RED
+                }
             end
         end
     end,
+})
+
+-- Taliyah
+SMODS.Joker({
+    key = "taliyah",
+    loc_txt = {
+        name = "Taliyah",
+        text = {
+            "{C:chips}+#1#{} Chips",
+            "When {C:attention}stone card{} is in played hand, gain 1 stack",
+            "At #3# stacks, add 2 {C:attention}stone cards{} to deck",
+            "{C:inactive}(Currently : #2# stacks){}"
+        },
+    },
+
+    config = {
+        extra = {
+            chips = 20,
+            stacks = 0,
+            stacks_need = 5,
+            stone = false
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips, card.ability.extra.stacks, card.ability.extra.stacks_need, card.ability.extra.stone },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 3, y = 3 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            card.ability.extra.decrease = false
+            for k, v in pairs(context.scoring_hand) do
+                for i = 1, #context.scoring_hand do
+                    local target_card = context.scoring_hand[i]
+                    if SMODS.has_enhancement(target_card, 'm_stone') then
+                        card.ability.extra.stone = true
+                        return {
+                            message = 'Stacking !',
+                            message_card = card,
+                            colour = G.C.BLUE
+                        }
+                    end
+                end
+            end
+        end
+
+        --reset the joker, and increase the stacks needed
+        if context.after and not context.blueprint then
+            if card.ability.extra.stone then
+                card.ability.extra.stacks = card.ability.extra.stacks + 1
+                card.ability.extra.stone = false
+            end
+            if card.ability.extra.stacks_need == card.ability.extra.stacks then
+                card.ability.extra.stacks = 0
+                local stone_card = SMODS.create_card({
+                    set = "Base",
+                    enhancement = "m_stone",
+                })
+                stone_card:add_to_deck()
+                stone_card:add_to_deck()
+
+                return {
+                    message = 'Rocks !',
+                    message_card = card,
+                    colour = G.C.RED
+                }
+            end
+        end
+    end
 })
 
 -- G.GAME.current_round.hands_played
