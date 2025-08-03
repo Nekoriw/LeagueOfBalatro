@@ -267,8 +267,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Malphite",
         text = {
-            "When {C:attention}Stone card{} is scored",
-            "gain {C:chips}+#2#{} Chips",
+            "This Joker gains {C:chips}+#2#{} Chips when a {C:attention}Stone card{} is played",
             "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}"
         },
     },
@@ -289,7 +288,7 @@ SMODS.Joker({
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 1,
+    rarity = 2,
     cost = 4,
 
     atlas = "LeagueOfBalatro_Jokers",
@@ -620,8 +619,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Kai'Sa",
         text = {
-            "Gain {X:mult,C:white}X#1#{} Mult and remove enhancement",
-            "When a {C:attention}Void Card{} is scored",
+            "This Joker gains {X:mult,C:white}X#1#{} Mult per scoring",
+            "{C:attention}Void Card{}, removes Void Enhancement",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult)"
         },
     },
