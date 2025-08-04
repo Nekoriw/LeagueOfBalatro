@@ -115,7 +115,7 @@ SMODS.Joker({
         name = "Zilean",
         text = {
             "Every {C:attention}3 hands{},",
-            "Zilean level up the played hand",
+            "level up the played hand",
             "{C:inactive}(#1# remaining)"
         },
     },
@@ -269,8 +269,7 @@ SMODS.Joker({
         text = {
             "This Joker gains {C:chips}+#2#{} Chips",
             "when a {C:attention}Stone card{} is played",
-            "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}",
-            "{C:inactive}(Must have room){}"
+            "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}"
         },
     },
     config = {
@@ -750,9 +749,9 @@ SMODS.Joker({
     loc_txt = {
         name = "Evelynn",
         text = {
-            "If {C:attention}first discard{} of the round has only {C:attention}1{} card :",
-            "Transform a {C:attention}Non-Heart{} card into an Heart",
-            "{C:inactive}(If it's already an Heart, destroy it){}"
+            "If {C:attention}first discard{} of the round has only {C:attention}1{} card",
+            "turn it into a {C:attention}heart{}",
+            "If it's already a {C:attention}heart{}, destroy it"
         },
     },
 
@@ -943,7 +942,7 @@ SMODS.Joker({
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 3,
+    rarity = 1,
     cost = 8,
 
     atlas = "LeagueOfBalatro_Jokers",
@@ -975,12 +974,9 @@ SMODS.Joker({
             end
             if card.ability.extra.stacks_need == card.ability.extra.stacks then
                 card.ability.extra.stacks = 0
-                local stone_card = SMODS.create_card({
-                    set = "Base",
-                    enhancement = "m_stone",
-                })
-                stone_card:add_to_deck()
-                stone_card:add_to_deck()
+
+                SMODS.add_card { set = "Base", enhancement = "m_stone", area = G.deck }
+                SMODS.add_card { set = "Base", enhancement = "m_stone", area = G.deck }
 
                 return {
                     message = 'Rocks !',
