@@ -890,8 +890,8 @@ SMODS.Joker({
     rarity = 3,
     cost = 8,
 
-    --atlas = "LeagueOfBalatro_Jokers",
-    --pos = { x = 1, y = 2 },
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 4, y = 3 },
 
     calculate = function(self, card, context)
         if context.before and not context.hook then

@@ -566,8 +566,8 @@ SMODS.Consumable {
     key = 'hextechDrake', -- key
     set = 'JungleCard',   -- the set of the card: corresponds to a consumable type
 
-    --atlas = 'LeagueOfBalatro_Consumables',
-    --pos = { x = 2, y = 0 },
+    atlas = 'LeagueOfBalatro_Consumables',
+    pos = { x = 3, y = 1 },
 
     loc_txt = {
         name = 'Hextech Drake', -- name of card
