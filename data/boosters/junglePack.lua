@@ -521,6 +521,7 @@ SMODS.Consumable {
         text = {               -- text of card
             'Create {C:attention}#1#{} random',
             'Jungle Cards',
+            "{C:inactive}(Must have room){}"
         }
     },
 
@@ -543,12 +544,14 @@ SMODS.Consumable {
 
     use = function(self, card)
         for i = 1, 2 do
-            SMODS.add_card({
-                skip_materialize = true,
-                set = "JungleCard",
-                no_edition = true,
-                area = G.consumeables,
-            })
+            if G.consumeables.config.card_limit > #G.consumeables.cards then
+                SMODS.add_card({
+                    skip_materialize = true,
+                    set = "JungleCard",
+                    no_edition = true,
+                    area = G.consumeables,
+                })
+            end
         end
     end
 }

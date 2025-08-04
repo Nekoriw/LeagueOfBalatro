@@ -267,8 +267,10 @@ SMODS.Joker({
     loc_txt = {
         name = "Malphite",
         text = {
-            "This Joker gains {C:chips}+#2#{} Chips when a {C:attention}Stone card{} is played",
-            "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}"
+            "This Joker gains {C:chips}+#2#{} Chips",
+            "when a {C:attention}Stone card{} is played",
+            "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}",
+            "{C:inactive}(Must have room){}"
         },
     },
     config = {
@@ -523,7 +525,8 @@ SMODS.Joker({
         name = "Ornn",
         text = {
             "When {C:attention}Blind{} is selected",
-            "Create a random {C:attention}consumable{}"
+            "Create a random {C:attention}consumable{}",
+            "{C:inactive}(Must have room){}"
         },
     },
 
@@ -552,19 +555,21 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.setting_blind then
-            SMODS.add_card({
-                skip_materialize = true,
-                set = "Consumeables",
-                soulable = false,
-                no_edition = true,
-                area = G.consumeables,
-            })
+            if G.consumeables.config.card_limit > #G.consumeables.cards then
+                SMODS.add_card({
+                    skip_materialize = true,
+                    set = "Consumeables",
+                    soulable = false,
+                    no_edition = true,
+                    area = G.consumeables,
+                })
 
-            return {
-                message = 'Crafted !',
-                message_card = card,
-                colour = G.C.BLUE
-            }
+                return {
+                    message = 'Crafted !',
+                    message_card = card,
+                    colour = G.C.BLUE
+                }
+            end
         end
     end,
 })
