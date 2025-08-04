@@ -18,7 +18,8 @@ SMODS.Enhancement({
     loc_txt = {
         name = "Hextech Card",
         text = {
-            ""
+            "Gain {C:attention}money{} equal to the number",
+            "of {C:attention}hands remaining{} in the round"
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -28,6 +29,11 @@ SMODS.Enhancement({
         }
     end,
     calculate = function(self, card, context)
-
+        if context.cardarea == G.play and context.main_scoring then
+            ease_dollars(G.GAME.current_round.hands_left)
+            return {
+                card_eval_status_text(card, 'extra', nil, nil, nil, { message = "Money !", colour = G.C.GOLD }),
+            }
+        end
     end
 })
