@@ -278,6 +278,7 @@ SMODS.Consumable {
                     play_sound('tarot1', 1.1, 0.6)
                     target_card:flip()
                     target_card:set_ability('m_LeagueOfBalatro_void', true)
+                    G.hand:unhighlight_all()
                     return true
                 end
             }))
@@ -381,6 +382,7 @@ SMODS.Consumable {
                     play_sound('tarot1', 1.1, 0.6)
                     target_card:flip()
                     target_card:set_ability("m_stone", true)
+                    G.hand:unhighlight_all()
                     return true
                 end
             }))
@@ -441,6 +443,7 @@ SMODS.Consumable {
                     play_sound('tarot1', 1.1, 0.6)
                     target_card:flip()
                     target_card:set_ability("m_LeagueOfBalatro_frozen", true)
+                    G.hand:unhighlight_all()
                     return true
                 end
             }))
