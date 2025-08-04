@@ -722,7 +722,7 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.individual and not context.blueprint and context.cardarea == G.play then
-            if context.other_card.base.suit == 'Diamonds' then
+            if context.other_card:is_suit('Diamonds') then
                 card.ability.extra.stacks = card.ability.extra.stacks + 1
                 if card.ability.extra.stacks >= 75 then
                     card.ability.extra.stacks = 0
