@@ -159,9 +159,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Naafiri",
         text = {
-            "Each hand played, gain {C:mult}+#2#{} Mult.",
-            "When {C:attention}Boss Blind{} is defeated",
-            "reset and gain {C:mult}+1{} Mult per hand",
+            "{C:mult}+#2#{} Mult per hand played",
+            "Resets and gains {C:mult}+1{} Mult per hand when {C:attention}Boss Blind{} is defeated",
             "{C:inactive}(Currently {}{C:mult}+#1#{} {C:inactive}Mult){}"
         },
     },
@@ -290,7 +289,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    cost = 4,
+    cost = 6,
 
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 3, y = 0 },
@@ -351,8 +350,8 @@ SMODS.Joker({
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 2,
-    cost = 6,
+    rarity = 1,
+    cost = 4,
 
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 7, y = 0 },
@@ -813,9 +812,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Ahri",
         text = {
-            "If {C:attention}first hand{} of the round has",
-            "only {C:attention}1{} card {C:attention}Decreases{}",
-            "rank of the card by {C:attention}1{}"
+            "If {C:attention}first hand{} of round has only {C:attention}1{} card",
+            "{C:attention}Decreases{} its rank by {C:attention}1{}"
         },
     },
 
@@ -864,9 +862,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Seraphine",
         text = {
-            "If {C:attention}first hand{} of the round has",
-            "only {C:attention}1{} card {C:attention}Increases{}",
-            "rank of the card by {C:attention}1{}"
+            "If {C:attention}first hand{} of round has only {C:attention}1{} card",
+            "{C:attention}Increases{} its rank by {C:attention}1{}"
         },
     },
 
@@ -915,16 +912,14 @@ SMODS.Joker({
     loc_txt = {
         name = "Taliyah",
         text = {
-            "{C:chips}+#1#{} Chips",
-            "When {C:attention}stone card{} is in played hand, gain 1 stack",
-            "At #3# stacks, add 2 {C:attention}stone cards{} to deck",
-            "{C:inactive}(Currently : #2# stacks){}"
+            "Every #2# hands containing a {C:attention}stone card{},",
+            "add 2 {C:attention}stone cards{} to deck",
+            "{C:inactive}(Currently #3# stacks){}"
         },
     },
 
     config = {
         extra = {
-            chips = 20,
             stacks = 0,
             stacks_need = 5,
             stone = false
@@ -933,7 +928,7 @@ SMODS.Joker({
 
     loc_vars = function(self, info_queue, card)
         return {
-            vars = { card.ability.extra.chips, card.ability.extra.stacks, card.ability.extra.stacks_need, card.ability.extra.stone },
+            vars = { card.ability.extra.stacks, card.ability.extra.stacks_need, card.ability.extra.stone },
         }
     end,
 
