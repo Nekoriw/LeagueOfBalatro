@@ -938,7 +938,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    cost = 8,
+    cost = 4,
 
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 3, y = 3 },
@@ -984,3 +984,44 @@ SMODS.Joker({
 })
 
 -- G.GAME.current_round.hands_played
+
+-- Trundle
+SMODS.Joker({
+    key = "trundle",
+    loc_txt = {
+        name = "Trundle",
+        text = {
+            "All played {C:attention}face{} cards",
+            "become {C:attention}Frozen{} cards",
+            "when scored"
+        },
+    },
+    config = {
+        extra = {
+
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {}
+    end,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 8, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            for k, v in ipairs(context.scoring_hand) do
+                if v:is_face() then
+                    v:set_ability("m_LeagueOfBalatro_frozen", true)
+                end
+            end
+        end
+    end,
+})
