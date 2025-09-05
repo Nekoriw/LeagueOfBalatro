@@ -1168,3 +1168,52 @@ SMODS.Joker({
         end
     end,
 })
+
+SMODS.current_mod.set_debuff = function(card)
+    if card.config.center.key == 'j_LeagueOfBalatro_olaf' then
+        return 'prevent_debuff'
+    end
+end
+
+-- Olaf
+SMODS.Joker({
+    key = "olaf",
+    loc_txt = {
+        name = "Olaf",
+        text = {
+            "{C:chips}+#1#{} Chips",
+            "{C:inactive}this joker can't be debuffed{}"
+        },
+    },
+
+    config = {
+        extra = {
+            chips = 100,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 1,
+    cost = 4,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 8, y = 2 },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+})
