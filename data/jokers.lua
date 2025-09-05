@@ -1112,7 +1112,7 @@ SMODS.Joker({
     pos = { x = 0, y = 1 },
 
     calculate = function(self, card, context)
-        if context.individual and not context.blueprint and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play then
             if SMODS.has_enhancement(context.other_card, 'm_LeagueOfBalatro_frozen') then
                 return {
                     mult = card.ability.extra.mult_gain
