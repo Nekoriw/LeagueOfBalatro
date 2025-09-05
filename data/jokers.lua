@@ -983,8 +983,6 @@ SMODS.Joker({
     end
 })
 
--- G.GAME.current_round.hands_played
-
 -- Trundle
 SMODS.Joker({
     key = "trundle",
@@ -1117,6 +1115,55 @@ SMODS.Joker({
                 return {
                     mult = card.ability.extra.mult_gain
                 }
+            end
+        end
+    end,
+})
+
+-- G.GAME.current_round.hands_played
+-- G.GAME.current_round.hands
+
+-- Lissandra
+SMODS.Joker({
+    key = "lissandra",
+    loc_txt = {
+        name = "Lissandra",
+        text = {
+            "In the {C:attention}final hand{} of",
+            "the round, enhance all scored",
+            "cards into {C:attention}Frozen cards{}"
+        },
+    },
+
+    config = {
+        extra = {
+
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 1, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if G.GAME.current_round.hands_left == 0 then
+                for k, v in ipairs(context.scoring_hand) do
+                    v:set_ability("m_LeagueOfBalatro_frozen", true)
+                end
             end
         end
     end,
