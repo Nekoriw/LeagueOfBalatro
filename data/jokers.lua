@@ -1006,7 +1006,7 @@ SMODS.Joker({
     end,
     unlocked = true,
     discovered = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
@@ -1022,6 +1022,57 @@ SMODS.Joker({
                     v:set_ability("m_LeagueOfBalatro_frozen", true)
                 end
             end
+        end
+    end,
+})
+
+-- Syndra
+SMODS.Joker({
+    key = "syndra",
+    loc_txt = {
+        name = "Syndra",
+        text = {
+            "Gain {X:mult,C:white}X#1#{} Mult",
+            "each time a {C:attention}club{} is scored",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+        },
+    },
+
+    config = {
+        extra = {
+            xmult_gain = 0.01,
+            xmult = 1,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 7, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+            if context.other_card:is_suit('Clubs') then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
         end
     end,
 })
