@@ -1083,8 +1083,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Braum",
         text = {
-            "{C:attention}Frozen card{} gives",
-            "{C:mult}+#1#{} Mult"
+            "Played {C:attention}Frozen card{}",
+            "gives {C:mult}+#1#{} Mult when scored"
         },
     },
 
@@ -1113,15 +1113,11 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.individual and not context.blueprint and context.cardarea == G.play then
-            if context.other_card:is_suit('Clubs') then
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            if SMODS.has_enhancement(context.other_card, 'm_LeagueOfBalatro_frozen') then
+                return {
+                    mult = card.ability.extra.mult_gain
+                }
             end
-        end
-
-        if context.joker_main then
-            return {
-                xmult = card.ability.extra.xmult
-            }
         end
     end,
 })
