@@ -224,7 +224,7 @@ SMODS.Joker({
     },
     config = {
         extra = {
-            chips = 10
+            chips = 1
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -1061,6 +1061,55 @@ SMODS.Joker({
 
     atlas = "LeagueOfBalatro_Jokers",
     pos = { x = 7, y = 1 },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+            if context.other_card:is_suit('Clubs') then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+})
+
+-- Braum
+SMODS.Joker({
+    key = "braum",
+    loc_txt = {
+        name = "Braum",
+        text = {
+            "{C:attention}Frozen card{} gives",
+            "{C:mult}+#1#{} Mult"
+        },
+    },
+
+    config = {
+        extra = {
+            mult_gain = 5,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.mult_gain },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 1,
+    cost = 4,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 0, y = 1 },
 
     calculate = function(self, card, context)
         if context.individual and not context.blueprint and context.cardarea == G.play then
