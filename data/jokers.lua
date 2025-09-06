@@ -1217,3 +1217,93 @@ SMODS.Joker({
         end
     end,
 })
+
+-- Hwei
+SMODS.Joker({
+    key = "hwei",
+    loc_txt = {
+        name = "Hwei",
+        text = {
+            "This Joker gains {X:mult,C:white}x1{} Mult",
+            "per {C:attention}different{} suits in hand"
+        },
+    },
+    config = {
+        extra = {
+            diamonds = false,
+            hearts = false,
+            spades = false,
+            clubs = false,
+            count = 0
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 0, y = 2 },
+
+    calculate = function(self, card, context)
+        if context.individual and not context.blueprint and context.cardarea == G.play then
+            if context.other_card:is_suit('Clubs') then
+                card.ability.extra.clubs = true
+            end
+
+            if context.other_card:is_suit('Hearts') then
+                card.ability.extra.hearts = true
+            end
+
+            if context.other_card:is_suit('Diamonds') then
+                card.ability.extra.diamonds = true
+            end
+
+            if context.other_card:is_suit('Spades') then
+                card.ability.extra.spades = true
+            end
+        end
+
+        if context.joker_main then
+            if card.ability.extra.diamonds then
+                card.ability.extra.count = card.ability.extra.count + 1
+            end
+
+            if card.ability.extra.hearts then
+                card.ability.extra.count = card.ability.extra.count + 1
+            end
+
+            if card.ability.extra.spades then
+                card.ability.extra.count = card.ability.extra.count + 1
+            end
+
+            if card.ability.extra.clubs then
+                card.ability.extra.count = card.ability.extra.count + 1
+            end
+
+            if card.ability.extra.count == 0 then
+                card.ability.extra.count = 1
+            end
+
+            return {
+                xmult = card.ability.extra.count
+            }
+        end
+
+        if context.after and not context.blueprint then
+            card.ability.extra.diamonds = false
+            card.ability.extra.hearts = false
+            card.ability.extra.spades = false
+            card.ability.extra.clubs = false
+            card.ability.extra.count = 0
+        end
+    end,
+})
