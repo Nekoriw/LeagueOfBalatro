@@ -141,7 +141,14 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers and not context.blueprint then
+            local eval = function()
+                return card.ability.extra.hands == 1
+            end
+
+            juice_card_until(card, eval, true)
+
             card.ability.extra.hands = card.ability.extra.hands - 1
+
             if (card.ability.extra.hands == 0) then
                 card.ability.extra.hands = 3
                 return {
@@ -468,6 +475,12 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
+            local eval = function()
+                return card.ability.extra.hand_count == 1
+            end
+
+            juice_card_until(card, eval, true)
+
             card.ability.extra.decrease = false
             for k, v in pairs(context.scoring_hand) do
                 for i = 1, #context.scoring_hand do
@@ -914,7 +927,7 @@ SMODS.Joker({
         text = {
             "Every #2# hands containing a {C:attention}stone card{},",
             "add 2 {C:attention}stone cards{} to deck",
-            "{C:inactive}(Currently #3# stacks){}"
+            "{C:inactive}(Currently #1# stacks){}"
         },
     },
 
@@ -945,6 +958,12 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
+            local eval = function()
+                return card.ability.extra.stacks == card.ability.extra.stacks_need - 1
+            end
+
+            juice_card_until(card, eval, true)
+
             card.ability.extra.decrease = false
             for k, v in pairs(context.scoring_hand) do
                 for i = 1, #context.scoring_hand do
@@ -1160,6 +1179,12 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
+            local eval = function()
+                return G.GAME.current_round.hands_left == 1
+            end
+
+            juice_card_until(card, eval, true)
+
             if G.GAME.current_round.hands_left == 0 then
                 for k, v in ipairs(context.scoring_hand) do
                     v:set_ability("m_LeagueOfBalatro_frozen", true)

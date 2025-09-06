@@ -200,7 +200,7 @@ SMODS.Consumable {
         end
 
         -- Shuffle the cards in cards
-        pseudoshuffle(cards, pseudoseed('voidgrubs'))
+        pseudoshuffle(cards, pseudoseed('seed'))
 
         -- turn 3 cards into void cards
         local choosen_cards = {}
