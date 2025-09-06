@@ -10,3 +10,6 @@ SMODS.load_file("data/enhancements/Hextech.lua")()
 
 -- Boosters
 SMODS.load_file("data/boosters/junglePack.lua")()
+
+-- Decks
+SMODS.load_file("data/decks/ChampionsDeck.lua")()
