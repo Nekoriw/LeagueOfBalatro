@@ -1169,6 +1169,7 @@ SMODS.Joker({
     end,
 })
 
+-- Anti-debuff Olaf
 SMODS.current_mod.set_debuff = function(card)
     if card.config.center.key == 'j_LeagueOfBalatro_olaf' then
         return 'prevent_debuff'
@@ -1304,6 +1305,51 @@ SMODS.Joker({
             card.ability.extra.spades = false
             card.ability.extra.clubs = false
             card.ability.extra.count = 0
+        end
+    end,
+})
+
+-- Vex
+SMODS.Joker({
+    key = "vex",
+    loc_txt = {
+        name = "Vex",
+        text = {
+            "Retrigger {C:attention}spade{} cards"
+        },
+    },
+
+    config = {
+        extra = {
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 9, y = 0 },
+
+    calculate = function(self, card, context)
+        if context.cardarea == G.play and context.repetition and not context.repetition_only then
+            if context.other_card:is_suit('Spades') then
+                return {
+                    message = 'Again!',
+                    repetitions = 1,
+                    card = context.other_card
+                }
+            end
         end
     end,
 })
