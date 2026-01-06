@@ -1417,3 +1417,55 @@ SMODS.Joker({
         end
     end
 })
+
+-- Caitlyn
+SMODS.Joker({
+    key = "caitlyn",
+    loc_txt = {
+        name = "Caitlyn",
+        text = {
+            'If your total score is',
+            'between {C:attention}90%{} and {C:attention}110%{}',
+            'of the {C:attention}Blind{} score, gain {C:money}$#1#{}'
+        },
+    },
+
+    config = {
+        extra = {
+            money = 10,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.money },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 8, y = 5 },
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval then
+            if G.GAME.chips / G.GAME.blind.chips >= 0.9 and G.GAME.chips / G.GAME.blind.chips <= 1.1 then
+                ease_dollars(card.ability.extra.money)
+                return {
+                    message = 'Ace in the hole !',
+                    message_card = card,
+                    color = G.C.MONEY
+                }
+            end
+        end
+    end
+})
+
+--G.GAME.blind.chips    blind score
+--G.GAME.chips          score done
