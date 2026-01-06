@@ -27,7 +27,7 @@ SMODS.ConsumableType {
             text = { 'Find this card in an unseeded run' } -- undiscovered text
         }
     },
-    shop_rate = 1, -- rate in shop out of 100
+    shop_rate = 4, -- rate in shop out of 100
 }
 
 --Booster 1

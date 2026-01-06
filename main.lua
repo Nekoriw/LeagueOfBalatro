@@ -13,3 +13,6 @@ SMODS.load_file("data/boosters/junglePack.lua")()
 
 -- Decks
 SMODS.load_file("data/decks/ChampionsDeck.lua")()
+
+-- Vouchers
+SMODS.load_file("data/vouchers.lua")()
