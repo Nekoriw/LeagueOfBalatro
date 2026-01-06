@@ -273,7 +273,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Malphite",
         text = {
-            "This Joker gains {C:chips}+#2#{} Chips",
+            "Gains {C:chips}+#2#{} Chips",
             "when a {C:attention}Stone card{} is played",
             "{C:inactive}(Currently {}{C:chips}+#1#{}{C:inactive} Chips){}"
         },
@@ -534,7 +534,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Ornn",
         text = {
-            "When {C:attention}Blind{} is selected",
+            "When {C:attention}Blind{} is selected,",
             "Create a random {C:attention}consumable{}",
             "{C:inactive}(Must have room){}"
         },
@@ -1356,7 +1356,7 @@ SMODS.Joker({
 
     unlocked = true,
     discovered = false,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     rarity = 3,
@@ -1376,4 +1376,44 @@ SMODS.Joker({
             end
         end
     end,
+})
+
+-- Poppy
+SMODS.Joker({
+    key = "poppy",
+    loc_txt = {
+        name = "Poppy",
+        text = {
+            "{C:attention}Played{} and {C:attention}Discarded{} cards go back in deck",
+            "{C:inactive}(After the next cards are drawn){}"
+        },
+    },
+
+    config = {
+        extra = {
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {},
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 5, y = 3 },
+
+    calculate = function(self, card, context)
+        if context.drawing_cards and not context.blueprint then
+            G.FUNCS.draw_from_discard_to_deck()
+        end
+    end
 })
