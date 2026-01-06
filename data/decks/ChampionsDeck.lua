@@ -22,8 +22,9 @@ SMODS.Back {
             func = function()
                 for k, v in pairs(G.P_CENTERS) do
                     if v.set == 'Joker' then
-                        if (not v.mod) then
-                            G.GAME.banned_keys[k] = true
+                        G.GAME.banned_keys[k] = true
+                        if (v.mod or {}).id == "LeagueOfBalatro" then
+                            G.GAME.banned_keys[k] = false
                         end
                     end
                 end
