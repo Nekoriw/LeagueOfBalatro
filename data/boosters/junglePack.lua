@@ -12,7 +12,7 @@ SMODS.Atlas {
     py = 95
 }
 
---Objective Pack
+--Jungle Pack
 SMODS.ConsumableType {
     key = 'JungleCard',                                    -- consumable type key
 
@@ -37,7 +37,7 @@ SMODS.Booster {
         name = "Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            '{C:attention}#2#{} {C:green}Jungle{} cards to',
             'be used immediately',
         },
         group_name = "Jungle Pack",
@@ -70,7 +70,7 @@ SMODS.Booster {
         name = "Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            '{C:attention}#2#{} {C:green}Jungle{} cards to',
             'be used immediately',
         },
         group_name = "Jungle Pack",
@@ -103,7 +103,7 @@ SMODS.Booster {
         name = "Jumbo Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            '{C:attention}#2#{} {C:green}Jungle{} cards to',
             'be used immediately',
         },
         group_name = "Jungle Pack",
@@ -136,7 +136,7 @@ SMODS.Booster {
         name = "Mega Jungle Pack",
         text = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} {C:2E6F40}Jungle{} cards to',
+            '{C:attention}#2#{} {C:green}Jungle{} cards to',
             'be used immediately',
         },
         group_name = "Jungle Pack",
@@ -172,7 +172,7 @@ SMODS.Consumable {
         name = 'Voidgrubs', -- name of card
         text = {            -- text of card
             "Enhances {C:attention}#1#{} random cards",
-            "to {C:attention}Void Card{}"
+            "to {C:attention}Void{} Card"
         }
     },
     config = {
@@ -238,7 +238,7 @@ SMODS.Consumable {
         name = 'Shelly', -- name of card
         text = {         -- text of card
             "Enhances {C:attention}#1#{} card",
-            "to {C:attention}Void Card{}"
+            "to {C:attention}Void{} Card"
         }
     },
     config = {
@@ -297,7 +297,7 @@ SMODS.Consumable {
         name = 'Baron Nashor', -- name of card
         text = {               -- text of card
             'Give {C:attention}#1#${} for each',
-            '{C:attention}Void Card{} in full deck',
+            '{C:attention}Void{} Card in full deck',
         }
     },
     config = {
@@ -403,7 +403,7 @@ SMODS.Consumable {
         name = 'Ocean Drake', -- name of card
         text = {              -- text of card
             "Enhances {C:attention}#1#{} cards",
-            "to {C:attention}Frozen Card{}"
+            "to {C:attention}Frozen{} Card"
         }
     },
     config = {
@@ -525,7 +525,7 @@ SMODS.Consumable {
         name = 'Scuttle Crab', -- name of card
         text = {               -- text of card
             'Create {C:attention}#1#{} random',
-            'Jungle Cards',
+            '{C:green}Jungle{} Cards',
             "{C:inactive}(Must have room){}"
         }
     },
@@ -573,7 +573,7 @@ SMODS.Consumable {
         name = 'Hextech Drake', -- name of card
         text = {                -- text of card
             "Enhances {C:attention}#1#{} cards",
-            "to {C:attention}Hextech Card{}"
+            "to {C:attention}Hextech{} Card"
         }
     },
     config = {

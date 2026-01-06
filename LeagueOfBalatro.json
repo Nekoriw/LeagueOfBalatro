@@ -2,14 +2,14 @@
     "id": "LeagueOfBalatro",
     "name": "League Of Balatro",
     "author": [
-        "Nekoriw"
+        "Shaylaen"
     ],
-    "description": "A Balatro mod, based on the game League Of Legends / Art by Nasth / Code by Nekoriw / Thanks to Elibal for helping at traduction",
+    "description": "A Balatro mod, based on the game League Of Legends / Art by Nasth / Code by Shaylaen / Thanks to Elibal for helping at traduction",
     "prefix": "LeagueOfBalatro",
     "main_file": "main.lua",
     "priority": 0,
     "badge_colour": "A020F0",
     "badge_text_colour": "",
-    "version": "0.0.0",
+    "version": "1.1.0",
     "dependencies": []
 }

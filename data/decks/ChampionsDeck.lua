@@ -12,7 +12,7 @@ SMODS.Back {
     loc_txt = {
         name = "Champions Deck",
         text = {
-            "Only League Of Balatro jokers",
+            "Only {C:attention}League Of Balatro{} jokers",
             "can spawn in this deck."
         },
     },

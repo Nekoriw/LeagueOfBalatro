@@ -63,7 +63,7 @@ SMODS.Joker({
         name = "Diana",
         text = {
             "Diana gains {C:chips}+#1#{} Chips",
-            "if Poker Hand is a {C:attention}Three of a kind{}",
+            "if played hand is a {C:attention}Three of a kind{}",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
         },
     },
@@ -334,7 +334,7 @@ SMODS.Joker({
         name = "Ivern",
         text = {
             "Gain {C:mult}+#2#{} Mult per",
-            "{C:attention}jungle card{} used",
+            "{C:green}Jungle{} card used",
             "{C:inactive}(Currently {}{C:mult}+#1#{}{C:inactive} Mult){}"
         },
     },
@@ -390,9 +390,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Nilah",
         text = {
-            "When a {C:attention}planet card{}",
-            "is used, level up",
-            "a random hand"
+            "When a {C:planet}Planet{} card is",
+            "used, level up a random hand"
         },
     },
 
@@ -440,7 +439,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Sejuani",
         text = {
-            "Every {C:attention}#1#{} hands containing a {C:attention}frozen card{}",
+            "Every {C:attention}#1#{} hands containing a {C:attention}Frozen{} card",
             "{C:attention}freeze{} all cards in {C:attention}played hand{}",
             "{C:inactive}(When this triggers, add #2# required hands){}",
             "{C:inactive}(#3# remaining){}"
@@ -636,7 +635,7 @@ SMODS.Joker({
         name = "Kai'Sa",
         text = {
             "This Joker gains {X:mult,C:white}X#1#{} Mult per scoring",
-            "{C:attention}Void Card{}, removes Void Enhancement",
+            "{C:attention}Void{} Card, removes Void Enhancement",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult)"
         },
     },
@@ -701,8 +700,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Aurelion Sol",
         text = {
-            "When a {C:attention}diamond{} card is scored,",
-            "Gain 1 stack. At 75 stacks, create a {C:attention}Black Hole{}",
+            "When a {C:diamonds}Diamond{} card is scored,",
+            "Gain 1 stack. At 75 stacks, create a {C:Spectral   }Black Hole{}",
             "{C:inactive}(Currently {C:chips}#1#{C:inactive} stacks)"
         },
     },
@@ -762,8 +761,8 @@ SMODS.Joker({
         name = "Evelynn",
         text = {
             "If {C:attention}first discard{} of the round has only {C:attention}1{} card",
-            "turn it into a {C:attention}heart{}",
-            "If it's already a {C:attention}heart{}, destroy it"
+            "turn it into a {C:hearts}Heart{}",
+            "If it's already a {C:hearts}Heart{}, destroy it"
         },
     },
 
@@ -826,7 +825,7 @@ SMODS.Joker({
         name = "Ahri",
         text = {
             "If {C:attention}first hand{} of round has only {C:attention}1{} card",
-            "{C:attention}Decreases{} its rank by {C:attention}1{}"
+            "Decreases its rank by {C:attention}1{}"
         },
     },
 
@@ -876,7 +875,7 @@ SMODS.Joker({
         name = "Seraphine",
         text = {
             "If {C:attention}first hand{} of round has only {C:attention}1{} card",
-            "{C:attention}Increases{} its rank by {C:attention}1{}"
+            "Increases its rank by {C:attention}1{}"
         },
     },
 
@@ -1050,7 +1049,7 @@ SMODS.Joker({
         name = "Syndra",
         text = {
             "Gain {X:mult,C:white}X#1#{} Mult",
-            "each time a {C:attention}club{} is scored",
+            "when a {C:clubs}Club{} is scored",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
         },
     },
@@ -1100,8 +1099,8 @@ SMODS.Joker({
     loc_txt = {
         name = "Braum",
         text = {
-            "Played {C:attention}Frozen card{}",
-            "gives {C:mult}+#1#{} Mult when scored"
+            "{C:attention}Frozen{} cards give",
+            "{C:mult}+#1#{} Mult when scored"
         },
     },
 
@@ -1150,7 +1149,7 @@ SMODS.Joker({
         text = {
             "In the {C:attention}final hand{} of",
             "the round, enhance all scored",
-            "cards into {C:attention}Frozen cards{}"
+            "cards into {C:attention}Frozen{} cards"
         },
     },
 
@@ -1208,7 +1207,7 @@ SMODS.Joker({
         name = "Olaf",
         text = {
             "{C:chips}+#1#{} Chips",
-            "{C:inactive}this joker can't be debuffed{}"
+            "{C:inactive}This joker can't be debuffed{}"
         },
     },
 
@@ -1340,7 +1339,7 @@ SMODS.Joker({
     loc_txt = {
         name = "Vex",
         text = {
-            "Retrigger {C:attention}spade{} cards"
+            "Retrigger {C:spades}Spade{} cards"
         },
     },
 

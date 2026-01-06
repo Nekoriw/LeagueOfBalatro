@@ -18,8 +18,9 @@ SMODS.Enhancement({
     loc_txt = {
         name = "Hextech Card",
         text = {
-            "Gain {C:attention}money{} equal to the number",
-            "of {C:attention}hands remaining{} in the round"
+            "Gain {C:attention}money{} equal to",
+            "the number of {C:attention}hands remaining{}",
+            "in the round when scored"
         },
     },
     loc_vars = function(self, info_queue, card)
