@@ -6,7 +6,7 @@ SMODS.Atlas {
 }
 SMODS.Back {
     atlas = "LeagueOfBalatro_Card",
-    name = "Champions Deck",
+    name = "Summoner's Deck",
     key = "champions",
     pos = { x = 4, y = 1 },
     loc_txt = {
