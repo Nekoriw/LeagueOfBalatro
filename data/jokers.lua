@@ -1469,3 +1469,234 @@ SMODS.Joker({
 
 --G.GAME.blind.chips    blind score
 --G.GAME.chips          score done
+
+-- Xayah
+SMODS.Joker({
+    key = "xayah",
+    loc_txt = {
+        name = "Xayah",
+        text = {
+            '{X:mult,C:white}X#1#{} Mult',
+            'When {C:attention}Blind{} is selected, if {C:attention}Rakan{}',
+            'is here, fuse them into {C:attention}Lovebirds{}'
+        },
+    },
+
+    config = {
+        extra = {
+            xmult = 1.5,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.xmult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 1, y = 3 },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint then
+            if next(SMODS.find_card('j_LeagueOfBalatro_rakan')) then
+                --Destroy Xayah
+                if not SMODS.is_eternal(card) then
+                    card:start_dissolve()
+                end
+            end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
+})
+
+-- Rakan
+SMODS.Joker({
+    key = "rakan",
+    loc_txt = {
+        name = "Rakan",
+        text = {
+            '{X:mult,C:white}X#1#{} Mult',
+            'When {C:attention}Blind{} is selected, if {C:attention}Xayah{}',
+            'is here, fuse them into {C:attention}Lovebirds{}'
+        },
+    },
+
+    config = {
+        extra = {
+            xmult = 1.5,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.xmult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 0, y = 3 },
+
+    calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint then
+            if next(SMODS.find_card('j_LeagueOfBalatro_xayah')) then
+                --Destroy Rakan
+                if not SMODS.is_eternal(card) then
+                    card:start_dissolve()
+                end
+                --Spawn Lovebirds
+                add_joker('j_LeagueOfBalatro_lovebirds')
+                return {
+                    message = 'Love !',
+                    message_card = card,
+                    color = G.C.RED
+                }
+            end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
+})
+
+-- Lovebirds
+SMODS.Joker({
+    key = "lovebirds",
+    loc_txt = {
+        name = "Lovebirds",
+        text = {
+            "{X:mult,C:white}X#1#{} Mult"
+        },
+    },
+
+    config = {
+        extra = {
+            xmult = 5,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.xmult },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 3,
+    cost = 8,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 0, y = 4 },
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+})
+
+-- Qiyana
+SMODS.Joker({
+    key = "qiyana",
+    loc_txt = {
+        name = "Qiyana",
+        text = {
+            'Gain stats based on rarity of Joker on the right',
+            '{C:blue}Common{}: {C:chips}+#1#{} Chips',
+            '{C:green}Uncommon{}: {C:mult}+#2#{} Mult',
+            '{C:red}Rare{}/{V:1}Legendary{} : {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult'
+        },
+    },
+
+    config = {
+        extra = {
+            chips_common = 25,
+            mult_uncommon = 10,
+            chips_rare = 50,
+            mult_rare = 20
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.chips_common, card.ability.extra.mult_uncommon, card.ability.extra.chips_rare, card.ability.extra.mult_rare },
+        }
+    end,
+
+    unlocked = true,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    rarity = 2,
+    cost = 6,
+
+    atlas = "LeagueOfBalatro_Jokers",
+    pos = { x = 9, y = 2 },
+
+    calculate = function(self, card, context)
+        local my_pos = nil
+        for i = 1, #G.jokers.cards do
+            if G.jokers.cards[i] == card then
+                my_pos = i
+                break
+            end
+        end
+        if context.joker_main and my_pos and G.jokers.cards[my_pos + 1] then
+            local rightJoker = G.jokers.cards[my_pos + 1]
+
+            if rightJoker:is_rarity('Common') then
+                return {
+                    chips = card.ability.extra.chips_common
+                }
+            end
+
+            if rightJoker:is_rarity('Uncommon') then
+                return {
+                    mult = card.ability.extra.mult_uncommon
+                }
+            end
+
+            if rightJoker:is_rarity('Rare') or rightJoker:is_rarity('Legendary') then
+                return {
+                    chips = card.ability.extra.chips_rare,
+                    mult = card.ability.extra.mult_rare
+                }
+            end
+        end
+    end
+})
