@@ -1638,7 +1638,7 @@ SMODS.Joker({
             'Gain stats based on rarity of Joker on the right',
             '{C:blue}Common{}: {C:chips}+#1#{} Chips',
             '{C:green}Uncommon{}: {C:mult}+#2#{} Mult',
-            '{C:red}Rare{}/{V:1}Legendary{} : {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult'
+            '{C:red}Rare{}/{C:purple}Legendary{} : {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult'
         },
     },
 
